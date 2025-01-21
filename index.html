@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Boda</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Incluir la librería de íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <h1>Tenemos una noticia ¡Nos casamos!</h1>
+        <nav>
+            <ul class="nav">
+                <li><a href="#nuestra-historia">Nuestra Historia</a></li>
+                <li><a href="#detalles">Detalles</a></li>
+                <li><a href="#alojamiento">Alojamiento</a></li>
+                <li><a href="#regalos">Regalos</a></li>
+                <li><a href="#transporte">Transporte</a></li>
+                <li><a href="#blog">Actualizaciones</a></li>
+                <li><a href="#rsvp">RSVP</a></li>
+                <li><a href="#mensajes">Mensajes</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+   <!-- Sección principal -->
+<section class="hero1">
+    <!-- Imagen de anillo -->
+    <img src="anillos.png" alt="Anillos de boda" width="150">
+    
+    <h1>
+        <span class="fuente-uno">Maria Alejandra Martínez Cárdenas</span> <br>
+        <span class="fuente-uno">y</span> <br>
+        <span class="fuente-uno">Joshua Damián Ruiz Pérez</span>
+    </h1>
+
+</section>
+
+    <section class="hero">
+	<h1>
+        <span class="fuente-dos">¡Estás cordialmente invitado!</span>
+   	 </h1>
+        <h2>Únete a nosotros para celebrar nuestro amor</h2>
+        <button class="cta-btn" onclick="scrollToSection('rsvp')">Confirma tu asistencia</button>
+    </section>
+
+    <!-- Detalles del evento -->
+    <section id="detalles" class="detalles">
+        <img src="brujula.png" alt="Detalles del Evento" width="150">
+        <h2>Detalles del Evento</h2>
+        <p>📅 <strong>Cuándo:</strong> Sábado, 17 de Mayo de 2025</p>
+        <p>📍 <strong>Dónde:</strong> Hotel Vista Azul, Aguadilla [84 Ave Montemar, Aguadilla]</p>
+        <p>⏰ <strong>Hora:</strong> 4:00pm</p>
+        <p>🎩 <strong>Código de vestimenta:</strong> Formal</p>
+        <button onclick="abrirMapa()">Abrir en Maps</button>
+    </section>
+
+    <!-- Información de Transporte -->
+    <section id="transporte" class="transporte">
+        <img src="Transporte.png" alt="Transporte" width="150">
+        <h2>Información de Transporte</h2>
+        <p> Puedes estacionarte libre de costo en las facilidades del hotel. Un segundo estacionamiento estará disponible en donde un transporte te llevará hasta el hotel para facilitar tu llegada. A continuación encontarás la información del transporte:</p>
+        <ul>
+            <li><strong>Autobús:</strong> Línea de autobús que llega al Hotel Vista Azul.</li>
+            <li><strong>Estacionamiento:</strong> Disponible en el lugar del evento.</li>
+        </ul>
+    </section>
+
+    <!-- Confirmación de asistencia -->
+    <section id="rsvp" class="rsvp">
+        <h2>Confirma tu asistencia</h2>
+        <form action="procesar_rsvp.php" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="asistencia">¿Asistirás?</label>
+            <select id="asistencia" name="asistencia" required>
+                <option value="">Selecciona una opción</option>
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+            </select>
+
+            <label for="comentarios">Comentarios:</label>
+            <textarea id="comentarios" name="comentarios" rows="4" placeholder="Escribe tus comentarios aquí..."></textarea>
+
+            <button type="submit">Enviar confirmación</button>
+        </form>
+    </section>
+
+    <!-- Mensajes de los Invitados -->
+    <section id="mensajes" class="mensajes">
+        <img src="Sobre.png" alt="Mensajes de los Invitados" width="150">
+        <h2>Mensajes de los Invitados</h2>
+        <form action="procesar_mensaje.php" method="POST">
+            <label for="mensaje-nombre">Nombre:</label>
+            <input type="text" id="mensaje-nombre" name="nombre" required>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+            <button type="submit">Enviar Mensaje</button>
+        </form>
+        <!-- Aquí puedes mostrar los mensajes enviados -->
+        <div class="lista-mensajes">
+            <h3>Lo que dicen nuestros invitados:</h3>
+            <div class="mensaje-item">
+                <p><strong>Juan Pérez:</strong> ¡Felicidades a los dos!</p>
+            </div>
+            <!-- Más mensajes -->
+        </div>
+    </section>
+
+    <!-- Preguntas frecuentes -->
+    <section id="faq" class="faq">
+        <img src="pregunta.png" alt="Preguntas Frecuentes" width="150">
+        <h2>Preguntas Frecuentes</h2>
+        <div class="faq-item">
+            <h3>¿Cuál es el código de vestimenta?</h3>
+            <p>El código de vestimenta es formal.</p>
+        </div>
+        <div class="faq-item">
+            <h3>¿Si quiero darles un regalo como sería?</h3>
+            <p>Si deseas regalarnos algo, preferimos que sea en efectivo. </p>
+        </div>
+        <!-- Añade más preguntas según sea necesario -->
+    </section>
+
+    <!-- Galería -->
+    <section id="galeria" class="galeria">
+        <img src="camara.png" alt="Galería" width="150">
+        <h2>Galería</h2>
+        <div class="carousel">
+            <img src="foto1.jpg" alt="Preboda 1">
+            <img src="foto2.jpg" alt="Preboda 2">
+            <img src="foto3.jpg" alt="Preboda 3">
+            <!-- Añade más imágenes según sea necesario -->
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <p>Gracias por acompañarnos en este día especial</p>
+        <p>&copy; 2025 Maria & Joshua</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function abrirMapa() {
+            window.open('https://www.google.com/maps/place/Hotel+Vista+Azul,+Aguadilla', '_blank');
+        }
+
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            if (section) {
+                window.scrollTo({
+                    top: section.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,609 @@
+/* General */
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f8f8f8;
+    font-size: 16px; /* Tamaño de fuente base ajustado a 16px para mejor legibilidad */
+}
+
+a {
+    color: inherit; /* Mantiene el color de texto por defecto para los enlaces */
+    transition: color 0.3s ease;
+}
+
+    a:hover {
+        color: #d4af37; /* Cambio de color al pasar el cursor */
+    }
+
+/* Header */
+.header {
+    background-image: url('fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: white;
+    padding: 100px 20px;
+    justify-content: flex-end; /* Baja el contenido */
+    padding-bottom: 50px; /* Ajusta la posición */
+    text-align: center;
+}
+
+    .header h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+.nav {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+    .nav li {
+        margin: 0 15px;
+    }
+
+    .nav a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+        .nav a:hover {
+            color: #d4af37;
+        }
+
+/* Sección principal */
+.hero1 {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fff;
+    font-family: 'Lato', cursive; /* Fuente segura */
+    font-size: 2.5em; /* Tamaño de texto */
+}
+
+/* Fuente elegante para nombres */
+.fuente-uno {
+    font-family: 'Playfair Display', Kunstler Script;
+    font-size: 60px;
+    color: #333;
+}
+
+/* Fuente moderna para la invitación */
+.fuente-dos {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    color: #555;
+}
+
+    .hero1 img {
+        margin-bottom: 20px;
+    }
+
+    .hero1 h1 {
+        margin-bottom: 10px;
+    }
+
+    .hero1 h2 {
+        font-size: 1.5em;
+        color: #555;
+    }
+
+.hero {
+    text-align: center;
+    color: #333;
+    padding: 80px 30px;
+    background-color: #BDD1C4;
+}
+
+    .hero h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+.cta-btn {
+    background-color: #d4af37;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+    .cta-btn:hover {
+        background-color: #b89c2e;
+    }
+
+/* Nuestra Historia */
+.nuestra-historia {
+    padding: 50px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+    .nuestra-historia img {
+        margin-bottom: 20px;
+    }
+
+    .nuestra-historia h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .nuestra-historia p {
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+        font-size: 1em;
+        color: #555;
+    }
+
+/* Detalles del Evento */
+.detalles {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+    .detalles img {
+        margin-bottom: 20px;
+    }
+
+    .detalles h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .detalles p {
+        font-size: 1.1em;
+        margin: 10px 0;
+    }
+
+    .detalles button {
+        background-color: #d4af37;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 1em;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+        .detalles button:hover {
+            background-color: #b89c2e;
+        }
+
+/* Información de Alojamiento */
+.alojamiento {
+    padding: 50px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+    .alojamiento img {
+        margin-bottom: 20px;
+    }
+
+    .alojamiento h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .alojamiento p {
+        max-width: 800px;
+        margin: 0 auto 20px;
+        line-height: 1.6;
+        font-size: 1em;
+        color: #555;
+    }
+
+    .alojamiento ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .alojamiento li {
+        margin: 10px 0;
+        font-size: 1em;
+    }
+
+    .alojamiento a {
+        color: #d4af37;
+        text-decoration: none;
+    }
+
+        .alojamiento a:hover {
+            text-decoration: underline;
+        }
+
+/* Registro de Regalos */
+.regalos {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+    .regalos img {
+        margin-bottom: 20px;
+    }
+
+    .regalos h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .regalos p {
+        max-width: 800px;
+        margin: 0 auto 20px;
+        line-height: 1.6;
+        font-size: 1em;
+        color: #555;
+    }
+
+    .regalos ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .regalos li {
+        margin: 10px 0;
+        font-size: 1em;
+    }
+
+    .regalos a {
+        color: #d4af37;
+        text-decoration: none;
+    }
+
+        .regalos a:hover {
+            text-decoration: underline;
+        }
+
+/* Información de Transporte */
+.transporte {
+    padding: 50px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+    .transporte img {
+        margin-bottom: 20px;
+    }
+
+    .transporte h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .transporte p {
+        max-width: 800px;
+        margin: 0 auto 20px;
+        line-height: 1.6;
+        font-size: 1em;
+        color: #555;
+    }
+
+    .transporte ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .transporte li {
+        margin: 10px 0;
+        font-size: 1em;
+    }
+
+/* Blog o Actualizaciones */
+.blog {
+    padding: 50px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+    .blog img {
+        margin-bottom: 20px;
+    }
+
+    .blog h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .blog p {
+        max-width: 800px;
+        margin: 0 auto 20px;
+        line-height: 1.6;
+        font-size: 1em;
+        color: #555;
+    }
+
+/* Confirmación de Asistencia (RSVP) */
+.rsvp {
+    padding: 50px 20px;
+    background-color: #BDD1C4;
+    text-align: center;
+}
+
+    .rsvp h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .rsvp form {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .rsvp label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .rsvp input[type="text"],
+    .rsvp input[type="email"],
+    .rsvp select,
+    .rsvp textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1em;
+        box-sizing: border-box;
+    }
+
+    .rsvp button {
+        background-color: #d4af37;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        cursor: pointer;
+        font-size: 1em;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+        .rsvp button:hover {
+            background-color: #b89c2e;
+        }
+
+/* Mensajes de los Invitados */
+.mensajes {
+    padding: 50px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+    .mensajes img {
+        margin-bottom: 20px;
+    }
+
+    .mensajes h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .mensajes form {
+        max-width: 600px;
+        margin: 0 auto 40px;
+        text-align: left;
+    }
+
+    .mensajes label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .mensajes input[type="text"],
+    .mensajes textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1em;
+        box-sizing: border-box;
+    }
+
+    .mensajes button {
+        background-color: #d4af37;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        cursor: pointer;
+        font-size: 1em;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+        .mensajes button:hover {
+            background-color: #b89c2e;
+        }
+
+.lista-mensajes {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+    .lista-mensajes h3 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+
+.mensaje-item {
+    background-color: #f1f1f1;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+    .mensaje-item p {
+        margin: 0;
+        font-size: 1em;
+        color: #555;
+    }
+
+/* Preguntas Frecuentes (FAQ) */
+.faq {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+    .faq img {
+        margin-bottom: 20px;
+    }
+
+    .faq h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+.faq-item {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    text-align: left;
+}
+
+    .faq-item h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        color: #d4af37;
+    }
+
+    .faq-item p {
+        font-size: 1em;
+        color: #555;
+    }
+
+/* Galería */
+.galeria {
+    padding: 50px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+    .galeria img {
+        margin-bottom: 20px;
+    }
+
+    .galeria h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+.carousel {
+    display: flex;
+    overflow-x: scroll;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+    .carousel img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #5C5C5C;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-size: 1em;
+}
+
+    .footer p {
+        margin: 5px 0;
+    }
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+    }
+
+        .nav li {
+            margin: 10px 0;
+        }
+
+    .hero1, .hero, .detalles, .alojamiento, .regalos, .transporte, .blog, .rsvp, .mensajes, .faq, .galeria {
+        padding: 30px 15px;
+    }
+
+    .carousel {
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .carousel img {
+            width: 80%;
+        }
+
+    .rsvp form, .mensajes form {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    .header h1 {
+        font-size: 1.8em;
+    }
+
+    .nav a {
+        font-size: 1em;
+    }
+
+    .hero1 {
+        font-size: 2em;
+    }
+
+        .hero1 h1 {
+            font-size: 1.8em;
+        }
+
+        .hero1 h2 {
+            font-size: 1.2em;
+        }
+
+    .hero h1 {
+        font-size: 1.5em;
+    }
+
+    .cta-btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    .detalles p, .alojamiento p, .regalos p, .transporte p, .blog p, .faq-item p {
+        font-size: 0.9em;
+    }
+
+    .rsvp, .mensajes {
+        font-size: 0.9em;
+    }
+
+    .footer {
+        font-size: 0.9em;
+    }
+}
