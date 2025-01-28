@@ -1,15 +1,20 @@
-/* General */
+/* =========================================================
+   General Styles
+========================================================= */
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', sans-serif; /* Fuente base */
     margin: 0;
     padding: 0;
     color: #333;
     background-color: #f8f8f8;
-    font-size: 16px; /* Tamaño de fuente base ajustado a 16px para mejor legibilidad */
+    font-size: 18px; /* Tamaño de fuente base ajustado a 18px */
+    text-decoration-color: #563E7A;
+    line-height: 1.5; /* Aumento el espacio entre las líneas para mejorar la legibilidad */
+    text-align: center; /* Alineación de texto por defecto */
 }
 
 a {
-    color: inherit; /* Mantiene el color de texto por defecto para los enlaces */
+    color: #563E7A; /* Mantiene el color de texto por defecto para los enlaces */
     transition: color 0.3s ease;
 }
 
@@ -17,96 +22,93 @@ a {
         color: #d4af37; /* Cambio de color al pasar el cursor */
     }
 
-/* Header */
-.header {
-    background-image: url('fondo.jpg');
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    color: white;
-    padding: 100px 20px;
-    justify-content: flex-end; /* Baja el contenido */
-    padding-bottom: 50px; /* Ajusta la posición */
-    text-align: center;
+@font-face {
+    font-family: 'Allura';
+    src: url('fonts/Allura-Regular.woff2') format('woff2'), url('fonts/Allura-Regular.woff') format('woff'), url('fonts/Allura-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
 }
-
-    .header h1 {
-        font-size: 2.5em;
-        margin-bottom: 20px;
-    }
-
+/* =========================================================
+   Navegación
+========================================================= */
 .nav {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    list-style: none; /* Elimina los puntos de la lista */
+    padding: 0; /* Elimina el padding predeterminado */
+    margin: 0; /* Elimina el margen predeterminado */
+    display: flex; /* Alinea los elementos en una fila */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    line-height: 3.5; /* Aumento el espacio entre las líneas para mejorar la legibilidad */
 }
 
     .nav li {
-        margin: 0 15px;
+        margin: 0 15px; /* Espacio entre los elementos de la lista */
     }
 
     .nav a {
-        text-decoration: none;
-        color: white;
-        font-weight: bold;
-        font-size: 1.1em;
+        font-weight: bold; /* Texto en negrita */
+        font-size: 1.4em; /* Tamaño de la fuente */
     }
 
-        .nav a:hover {
-            color: #d4af37;
-        }
+/* =========================================================
+   Tipografías Personalizadas
+========================================================= */
 
-/* Sección principal */
-.hero1 {
-    text-align: center;
-    padding: 50px 20px;
-    background-color: #fff;
-    font-family: 'Lato', cursive; /* Fuente segura */
-    font-size: 2.5em; /* Tamaño de texto */
-}
-
-/* Fuente elegante para nombres */
 .fuente-uno {
-    font-family: 'Playfair Display', Kunstler Script;
-    font-size: 60px;
+    font-family: 'Allura', cursive;
+    font-size: 2.8em; /* Aumenta el tamaño para mayor elegancia */
     color: #333;
+    line-height: 1.5;
+    font-weight: normal;
+    text-align: center; /* Centra los elementos horizontalmente */
+    background-color: #f8f8f8;
 }
 
-/* Fuente moderna para la invitación */
 .fuente-dos {
     font-family: 'Montserrat', sans-serif;
-    font-size: 30px;
+    font-size: 0.7em; /* Tamaño de fuente más pequeño pero claro */
     color: #555;
+    font-weight: normal;
+    text-align: center; /* Centra los elementos horizontalmente */
+    line-height: 1.0;
 }
 
-    .hero1 img {
-        margin-bottom: 20px;
-    }
+/* =========================================================
+   Hero Section
+========================================================= */
+.hero1 img {
+    margin-bottom: 5px;
+}
 
-    .hero1 h1 {
-        margin-bottom: 10px;
-    }
+.hero1 h1 {
+    margin-bottom: 5px;
+}
 
-    .hero1 h2 {
-        font-size: 1.5em;
-        color: #555;
-    }
+.hero1 h2 {
+    font-size: 1.5em;
+    color: #555;
+}
 
 .hero {
     text-align: center;
     color: #333;
-    padding: 80px 30px;
+    padding: 50px 30px;
     background-color: #BDD1C4;
 }
 
     .hero h1 {
         font-size: 2em;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+        font-family: 'Montserrat', 'Baguet Script', sans-serif;
     }
 
+    .hero h2 {
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+/* =========================================================
+   Botones de Llamada a la Acción
+========================================================= */
 .cta-btn {
     background-color: #d4af37;
     color: white;
@@ -122,31 +124,32 @@ a {
         background-color: #b89c2e;
     }
 
-/* Nuestra Historia */
-.nuestra-historia {
-    padding: 50px 20px;
-    background-color: #fff;
+/* =========================================================
+   Temporizador (Countdown Timer)
+========================================================= */
+.timer-section {
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    margin: 50px 0;
 }
 
-    .nuestra-historia img {
-        margin-bottom: 20px;
+#countdown {
+    font-size: 32px;
+    font-weight: bold;
+    color: #d4af37; /* Color dorado para el temporizador */
+}
+
+    #countdown span {
+        margin: 0 10px;
+        padding: 10px;
+        background-color: #333;
+        color: white;
+        border-radius: 5px;
     }
 
-    .nuestra-historia h2 {
-        font-size: 2em;
-        margin-bottom: 20px;
-    }
-
-    .nuestra-historia p {
-        max-width: 800px;
-        margin: 0 auto;
-        line-height: 1.6;
-        font-size: 1em;
-        color: #555;
-    }
-
-/* Detalles del Evento */
+/* =========================================================
+   Detalles del Evento
+========================================================= */
 .detalles {
     padding: 50px 20px;
     background-color: #f9f9f9;
@@ -182,93 +185,9 @@ a {
             background-color: #b89c2e;
         }
 
-/* Información de Alojamiento */
-.alojamiento {
-    padding: 50px 20px;
-    background-color: #fff;
-    text-align: center;
-}
-
-    .alojamiento img {
-        margin-bottom: 20px;
-    }
-
-    .alojamiento h2 {
-        font-size: 2em;
-        margin-bottom: 20px;
-    }
-
-    .alojamiento p {
-        max-width: 800px;
-        margin: 0 auto 20px;
-        line-height: 1.6;
-        font-size: 1em;
-        color: #555;
-    }
-
-    .alojamiento ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .alojamiento li {
-        margin: 10px 0;
-        font-size: 1em;
-    }
-
-    .alojamiento a {
-        color: #d4af37;
-        text-decoration: none;
-    }
-
-        .alojamiento a:hover {
-            text-decoration: underline;
-        }
-
-/* Registro de Regalos */
-.regalos {
-    padding: 50px 20px;
-    background-color: #f9f9f9;
-    text-align: center;
-}
-
-    .regalos img {
-        margin-bottom: 20px;
-    }
-
-    .regalos h2 {
-        font-size: 2em;
-        margin-bottom: 20px;
-    }
-
-    .regalos p {
-        max-width: 800px;
-        margin: 0 auto 20px;
-        line-height: 1.6;
-        font-size: 1em;
-        color: #555;
-    }
-
-    .regalos ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .regalos li {
-        margin: 10px 0;
-        font-size: 1em;
-    }
-
-    .regalos a {
-        color: #d4af37;
-        text-decoration: none;
-    }
-
-        .regalos a:hover {
-            text-decoration: underline;
-        }
-
-/* Información de Transporte */
+/* =========================================================
+   Información de Transporte
+========================================================= */
 .transporte {
     padding: 50px 20px;
     background-color: #fff;
@@ -302,7 +221,9 @@ a {
         font-size: 1em;
     }
 
-/* Blog o Actualizaciones */
+/* =========================================================
+   Blog o Actualizaciones
+========================================================= */
 .blog {
     padding: 50px 20px;
     background-color: #fff;
@@ -326,7 +247,9 @@ a {
         color: #555;
     }
 
-/* Confirmación de Asistencia (RSVP) */
+/* =========================================================
+   Confirmación de Asistencia (RSVP)
+========================================================= */
 .rsvp {
     padding: 50px 20px;
     background-color: #BDD1C4;
@@ -378,7 +301,9 @@ a {
             background-color: #b89c2e;
         }
 
-/* Mensajes de los Invitados */
+/* =========================================================
+   Mensajes de los Invitados
+========================================================= */
 .mensajes {
     padding: 50px 20px;
     background-color: #fff;
@@ -456,10 +381,12 @@ a {
         color: #555;
     }
 
-/* Preguntas Frecuentes (FAQ) */
+/* =========================================================
+   Preguntas Frecuentes (FAQ)
+========================================================= */
 .faq {
     padding: 50px 20px;
-    background-color: #f9f9f9;
+    background-color: white;
     text-align: center;
 }
 
@@ -489,19 +416,23 @@ a {
         color: #555;
     }
 
-/* Galería */
+
+
+/* =========================================================
+   Galería
+========================================================= */
 .galeria {
     padding: 50px 20px;
-    background-color: #fff;
+    background-color: #f9f9f9;
     text-align: center;
 }
 
-    .galeria img {
+    .galeria h2 {
+        font-size: 2em;
         margin-bottom: 20px;
     }
 
-    .galeria h2 {
-        font-size: 2em;
+    .galeria img {
         margin-bottom: 20px;
     }
 
@@ -513,13 +444,15 @@ a {
 }
 
     .carousel img {
-        max-width: 100%;
+        max-width: 1000%;
         height: auto;
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-/* Footer */
+/* =========================================================
+   Footer
+========================================================= */
 .footer {
     text-align: center;
     padding: 30px 20px;
@@ -533,7 +466,81 @@ a {
         margin: 5px 0;
     }
 
-/* Responsividad */
+/* =========================================================
+   Timeline para Invitación de Boda
+========================================================= */
+.timeline-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+    .timeline-container h1 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #333333;
+    }
+
+.timeline {
+    position: relative;
+    padding: 20px 0;
+    margin-left: 20px;
+}
+
+    .timeline::after {
+        content: '';
+        position: absolute;
+        left: 30px;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: #e0e0e0;
+    }
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding-left: 60px;
+}
+
+    .timeline-item:last-child {
+        margin-bottom: 0;
+    }
+
+.timeline-icon {
+    position: absolute;
+    left: 20px;
+    background: #ff6f61;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: 0;
+    transform: translateY(0);
+}
+
+.timeline-content {
+    background: #f1f1f1;
+    padding: 15px 20px;
+    border-radius: 6px;
+    position: relative;
+}
+
+    .timeline-content h2 {
+        margin-top: 0;
+        color: #ff6f61;
+    }
+
+    .timeline-content p {
+        margin: 5px 0 0;
+        color: #555555;
+    }
+
+/* =========================================================
+   Responsive Design
+========================================================= */
 @media (max-width: 768px) {
     .nav {
         flex-direction: column;
@@ -543,7 +550,15 @@ a {
             margin: 10px 0;
         }
 
-    .hero1, .hero, .detalles, .alojamiento, .regalos, .transporte, .blog, .rsvp, .mensajes, .faq, .galeria {
+    .hero1,
+    .hero,
+    .detalles,
+    .transporte,
+    .blog,
+    .rsvp,
+    .mensajes,
+    .faq,
+    .galeria {
         padding: 30px 15px;
     }
 
@@ -556,14 +571,34 @@ a {
             width: 80%;
         }
 
-    .rsvp form, .mensajes form {
+    .rsvp form,
+    .mensajes form {
         font-size: 0.9em;
+    }
+}
+
+@media (max-width: 600px) {
+    .timeline {
+        margin-left: 10px;
+    }
+
+        .timeline::after {
+            left: 20px;
+        }
+
+    .timeline-item {
+        padding-left: 50px;
+    }
+
+    .timeline-icon {
+        left: 10px;
     }
 }
 
 @media (max-width: 480px) {
     body {
         font-size: 14px;
+        font-family: 'Montserrat', sans-serif; /* Sobrescribe a la fuente anterior */
     }
 
     .header h1 {
@@ -595,11 +630,15 @@ a {
         font-size: 0.9em;
     }
 
-    .detalles p, .alojamiento p, .regalos p, .transporte p, .blog p, .faq-item p {
+    .detalles p,
+    .transporte p,
+    .blog p,
+    .faq-item p {
         font-size: 0.9em;
     }
 
-    .rsvp, .mensajes {
+    .rsvp,
+    .mensajes {
         font-size: 0.9em;
     }
 
