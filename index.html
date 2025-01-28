@@ -4,50 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitación de Boda</title>
+    <!-- Enlaces a hojas de estilo y fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <!-- Incluir la librería de íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <!-- Encabezado -->
-    <header class="header">
-        <h1>Tenemos una noticia ¡Nos casamos!</h1>
-        <nav>
-            <ul class="nav">
-                <li><a href="#nuestra-historia">Nuestra Historia</a></li>
-                <li><a href="#detalles">Detalles</a></li>
-                <li><a href="#alojamiento">Alojamiento</a></li>
-                <li><a href="#regalos">Regalos</a></li>
-                <li><a href="#transporte">Transporte</a></li>
-                <li><a href="#blog">Actualizaciones</a></li>
-                <li><a href="#rsvp">RSVP</a></li>
-                <li><a href="#mensajes">Mensajes</a></li>
-                <li><a href="#galeria">Galería</a></li>
-                <li><a href="#faq">FAQ</a></li>
-            </ul>
-        </nav>
-    </header>
 
-   <!-- Sección principal -->
-<section class="hero1">
-    <!-- Imagen de anillo -->
-    <img src="anillos.png" alt="Anillos de boda" width="150">
-    
-    <h1>
-        <span class="fuente-uno">Maria Alejandra Martínez Cárdenas</span> <br>
-        <span class="fuente-uno">y</span> <br>
-        <span class="fuente-uno">Joshua Damián Ruiz Pérez</span>
-    </h1>
+    <!-- Sección principal -->
+    <section class="hero1">
+        <h1>
+            <span class="fuente-uno">Alejandra</span> <br>
+            <span class="fuente-uno">y</span> <br>
+            <span class="fuente-uno">Joshua</span>
+        </h1>
 
-</section>
+        <!-- Encabezado -->
+        <header class="header">
+            <img src="anillos.png" alt="anillos" width="150">
+            <h1>Tenemos una noticia ¡Nos casamos!</h1>
+            <section class="hero2">
+                <h2>
+                    <span class="fuente-dos">¡Con mucha alegría anunciamos la fecha de nuestra boda! Queremos compartir este momento único y especial con todos nuestros seres queridos y amigos. Será un día inolvidable, y nos encantaría contar con tu presencia. ¡Te esperamos con entusiasmo para celebrar juntos este nuevo capítulo de nuestras vidas!</span>
+                </h2>
 
+            </section>
+
+            <!-- Sección del temporizador -->
+            <section class="timer-section">
+                <h2>¡Faltan solo!</h2>
+                <div id="countdown">
+                    <span id="days">00</span> días
+                    <span id="hours">00</span> horas
+                    <span id="minutes">00</span> minutos
+                    <span id="seconds">00</span> segundos
+                </div>
+
+                <script>
+                    // Configurar la fecha objetivo (17 de mayo de 2025)
+                    const targetDate = new Date('2025-05-17T16:00:00').getTime();
+
+                    function updateTimer() {
+                        const now = new Date().getTime();
+                        const timeLeft = targetDate - now;
+
+                        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                        document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+                        if (timeLeft < 0) {
+                            clearInterval(timerInterval);
+                            document.getElementById('countdown').innerHTML = "¡La boda ha comenzado!";
+                        }
+                    }
+
+                    // Actualizar el temporizador inmediatamente y luego cada segundo
+                    updateTimer();
+                    const timerInterval = setInterval(updateTimer, 1000);
+                </script>
+            </section>
+
+
+    </section>
+
+    <!-- Sección de Invitación -->
     <section class="hero">
-	<h1>
-        <span class="fuente-dos">¡Estás cordialmente invitado!</span>
-   	 </h1>
+        <h1>
+            <span class="fuente-dos">¡Estás cordialmente invitado!</span>
+        </h1>
         <h2>Únete a nosotros para celebrar nuestro amor</h2>
         <button class="cta-btn" onclick="scrollToSection('rsvp')">Confirma tu asistencia</button>
     </section>
+
+    </section>
+    <nav>
+        <ul class="nav">
+            <li><a href="#detalles">Detalles</a></li>
+            <li><a href="#transporte">Transporte</a></li>
+            <li><a href="#blog">Actualizaciones</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
+            <li><a href="#mensajes">Mensajes</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+    </nav>
+    </header>
 
     <!-- Detalles del evento -->
     <section id="detalles" class="detalles">
@@ -57,115 +105,481 @@
         <p>📍 <strong>Dónde:</strong> Hotel Vista Azul, Aguadilla [84 Ave Montemar, Aguadilla]</p>
         <p>⏰ <strong>Hora:</strong> 4:00pm</p>
         <p>🎩 <strong>Código de vestimenta:</strong> Formal</p>
-        <button onclick="abrirMapa()">Abrir en Maps</button>
+        <button class="cta-btn" onclick="abrirMapa()">Abrir en Maps</button>
     </section>
 
     <!-- Información de Transporte -->
     <section id="transporte" class="transporte">
         <img src="Transporte.png" alt="Transporte" width="150">
         <h2>Información de Transporte</h2>
-        <p> Puedes estacionarte libre de costo en las facilidades del hotel. Un segundo estacionamiento estará disponible en donde un transporte te llevará hasta el hotel para facilitar tu llegada. A continuación encontarás la información del transporte:</p>
+        <p> Puedes estacionarte libre de costo en las facilidades del hotel. Un segundo estacionamiento estará disponible donde un transporte te llevará hasta el hotel para facilitar tu llegada. A continuación encontrarás la información del transporte:</p>
         <ul>
             <li><strong>Autobús:</strong> Línea de autobús que llega al Hotel Vista Azul.</li>
             <li><strong>Estacionamiento:</strong> Disponible en el lugar del evento.</li>
         </ul>
     </section>
 
-    <!-- Confirmación de asistencia -->
-    <section id="rsvp" class="rsvp">
-        <h2>Confirma tu asistencia</h2>
-        <form action="procesar_rsvp.php" method="POST">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Confirmación de Asistencia</title>
+        <style>
+            :root {
+                --primary: #6c5ce7;
+                --secondary: #a8a5e6;
+                --error: #ff5252;
+                --success: #00b894;
+            }
 
-            <label for="email">Correo Electrónico:</label>
-            <input type="email" id="email" name="email" required>
+            body {
+                font-family: 'Segoe UI', sans-serif;
+                background: #f8f9fa;
+                margin: 2rem;
+                padding: 2rem;
+            }
 
-            <label for="asistencia">¿Asistirás?</label>
-            <select id="asistencia" name="asistencia" required>
-                <option value="">Selecciona una opción</option>
-                <option value="si">Sí</option>
-                <option value="no">No</option>
-            </select>
+            .container {
+                max-width: 1000px;
+                margin: 2rem;
+                background: white;
+                padding: 2rem;
+                border-radius: 15px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+            }
+
+            .search-box {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+            .input-group {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                margin-bottom: 1rem;
+            }
+
+            input[type="text"] {
+                padding: 12px;
+                border: 2px solid #ddd;
+                border-radius: 8px;
+                width: 250px;
+                transition: all 0.3s;
+            }
+
+                input[type="text"]:focus {
+                    border-color: var(--primary);
+                    box-shadow: 0 0 8px rgba(108, 92, 231, 0.2);
+                    outline: none;
+                }
+
+            button {
+                padding: 12px 24px;
+                background: #d4af37;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+
+                button:hover {
+                    background: #5b4bc4;
+                    transform: translateY(-2px);
+                    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+                }
+
+            .form-container {
+                display: none;
+                animation: fadeIn 0.5s ease;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .guest-field {
+                margin-bottom: 1.5rem;
+                padding: 1rem;
+                background: #f8f9fa;
+                border-radius: 8px;
+            }
+
+            .error-message {
+                color: var(--error);
+                text-align: center;
+                margin: 1rem 0;
+                padding: 1rem;
+                background: #ffecec;
+                border-radius: 8px;
+                display: none;
+            }
+
+            textarea {
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #ddd;
+                border-radius: 8px;
+                margin: 1rem 0;
+                resize: vertical;
+            }
+
+            @media (max-width: 768px) {
+                .input-group {
+                    flex-direction: column;
+                }
+
+                input[type="text"] {
+                    width: 100%;
+                }
+
+                button {
+                    width: 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="input-group" style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                <img src="party.png" alt="Mensajes de los Invitados" width="150">
+                <h1 style="color: #000000; margin: 0;">Confirmación de asistencia</h1>
+                <div style="display: flex; gap: 0.5rem;">
+                    <input type="text" id="inputID" placeholder="Ingresa tu ID de invitación">
+                    <button onclick="buscarInvitado()">Buscar</button>
+                </div>
+                <p class="error-message" id="mensajeError"></p>
+            </div>
+
+        <form id="formRSVP" class="form-container" action="procesar_rsvp.php" method="POST">
+            <input type="hidden" id="invitadoID" name="invitadoID">
+            <h2 style="color: var(#000000); ">Bienvenido, <span id="nombreInvitado"></span></h2>
+            <p>Invitación válida para: <strong id="numeroInvitados"></strong> personas (ingresa tu nombre en invitado 1)</p>
+
+            <div id="camposInvitados"></div>
 
             <label for="comentarios">Comentarios:</label>
-            <textarea id="comentarios" name="comentarios" rows="4" placeholder="Escribe tus comentarios aquí..."></textarea>
+            <textarea id="comentarios" name="comentarios" rows="4"></textarea>
 
-            <button type="submit">Enviar confirmación</button>
+            <button type="submit">Confirmar Asistencia</button>
         </form>
-    </section>
-
-    <!-- Mensajes de los Invitados -->
-    <section id="mensajes" class="mensajes">
-        <img src="Sobre.png" alt="Mensajes de los Invitados" width="150">
-        <h2>Mensajes de los Invitados</h2>
-        <form action="procesar_mensaje.php" method="POST">
-            <label for="mensaje-nombre">Nombre:</label>
-            <input type="text" id="mensaje-nombre" name="nombre" required>
-
-            <label for="mensaje">Mensaje:</label>
-            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
-
-            <button type="submit">Enviar Mensaje</button>
-        </form>
-        <!-- Aquí puedes mostrar los mensajes enviados -->
-        <div class="lista-mensajes">
-            <h3>Lo que dicen nuestros invitados:</h3>
-            <div class="mensaje-item">
-                <p><strong>Juan Pérez:</strong> ¡Felicidades a los dos!</p>
-            </div>
-            <!-- Más mensajes -->
         </div>
-    </section>
 
-    <!-- Preguntas frecuentes -->
-    <section id="faq" class="faq">
-        <img src="pregunta.png" alt="Preguntas Frecuentes" width="150">
-        <h2>Preguntas Frecuentes</h2>
-        <div class="faq-item">
-            <h3>¿Cuál es el código de vestimenta?</h3>
-            <p>El código de vestimenta es formal.</p>
-        </div>
-        <div class="faq-item">
-            <h3>¿Si quiero darles un regalo como sería?</h3>
-            <p>Si deseas regalarnos algo, preferimos que sea en efectivo. </p>
-        </div>
-        <!-- Añade más preguntas según sea necesario -->
-    </section>
+        <script>
+            function buscarInvitado() {
+                const inputID = document.getElementById('inputID').value;
+                const errorElement = document.getElementById('mensajeError');
+                const form = document.getElementById('formRSVP');
 
-    <!-- Galería -->
-    <section id="galeria" class="galeria">
-        <img src="camara.png" alt="Galería" width="150">
-        <h2>Galería</h2>
-        <div class="carousel">
-            <img src="foto1.jpg" alt="Preboda 1">
-            <img src="foto2.jpg" alt="Preboda 2">
-            <img src="foto3.jpg" alt="Preboda 3">
-            <!-- Añade más imágenes según sea necesario -->
-        </div>
-    </section>
+                // Resetear estado
+                errorElement.style.display = 'none';
+                form.style.display = 'none';
 
-    <!-- Pie de página -->
-    <footer class="footer">
-        <p>Gracias por acompañarnos en este día especial</p>
-        <p>&copy; 2025 Maria & Joshua</p>
-    </footer>
+                // Validación básica
+                if (!inputID) {
+                    mostrarError('Por favor ingresa un ID válido');
+                    return;
+                }
 
-    <!-- Scripts -->
-    <script>
-        function abrirMapa() {
-            window.open('https://www.google.com/maps/place/Hotel+Vista+Azul,+Aguadilla', '_blank');
-        }
+                // Simular base de datos
+                const invitado = obtenerInvitado(inputID);
 
-        function scrollToSection(id) {
-            const section = document.getElementById(id);
-            if (section) {
-                window.scrollTo({
-                    top: section.offsetTop,
-                    behavior: 'smooth'
-                });
+                if (!invitado) {
+                    mostrarError('ID no encontrado. Verifica el número.');
+                    return;
+                }
+
+                // Mostrar formulario
+                mostrarFormulario(invitado);
             }
-        }
-    </script>
-</body>
+
+            function mostrarError(mensaje) {
+                const errorElement = document.getElementById('mensajeError');
+                errorElement.textContent = mensaje;
+                errorElement.style.display = 'block';
+            }
+
+            function mostrarFormulario(invitado) {
+                document.getElementById('nombreInvitado').textContent = invitado.nombre;
+                document.getElementById('numeroInvitados').textContent = invitado.invitados;
+                document.getElementById('invitadoID').value = invitado.id;
+
+                const campos = document.getElementById('camposInvitados');
+                campos.innerHTML = '';
+
+                for (let i = 0; i < invitado.invitados; i++) {
+                    campos.innerHTML += `
+                                            <div class="guest-field">
+                                                <label>Invitado ${i + 1}:</label>
+                                                <input type="text" name="invitado_${i}"
+                                                       placeholder="Nombre completo" required>
+                                            </div>
+                                        `;
+                }
+
+                document.getElementById('formRSVP').style.display = 'block';
+            }
+
+            // Base de datos simulada
+            function obtenerInvitado(id) {
+                const db = {
+                    '001': { id: '001', nombre: 'Ana López', invitados: 2 },
+                    '002': { id: '002', nombre: 'Carlos Ruiz', invitados: 3 },
+                    '003': { id: '003', nombre: 'María Gómez', invitados: 1 }
+                };
+                return db[id] || null;
+            }
+
+            // Animación al enviar el formulario
+            document.getElementById('formRSVP').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Simular envío
+<? php
+// Configuración básica
+$destinatario = "maria.martinez28@upr.edu"; //
+                $asunto = "Nueva confirmación de asistencia";
+
+                // Recoger datos del formulario
+                $invitadoID = $_POST['invitadoID'];
+                $comentarios = $_POST['comentarios'];
+                $mensaje = "ID del invitado: $invitadoID\n\n";
+
+                // Agregar nombres de invitados
+                foreach($_POST as $key => $value) {
+                    if (strpos($key, 'invitado_') === 0) {
+                        $mensaje.= "Invitado ".substr($key, 9). ": $value\n";
+                    }
+                }
+
+                $mensaje.= "\nComentarios:\n$comentarios";
+
+                // Cabeceras para formato y codificación
+                $headers = "From: confirmaciones@tudominio.com". "\r\n".
+           "Reply-To: no-responder@tudominio.com". "\r\n".
+           "Content-Type: text/plain; charset=UTF-8";
+
+                // Enviar correo
+                if (mail($destinatario, $asunto, $mensaje, $headers)) {
+    echo "¡Confirmación exitosa! 🎉";
+                } else {
+    echo "Error al enviar la confirmación. Inténtalo de nuevo.";
+                }
+?>
+
+            });
+        </script>
+
+        </section>
+
+        <!-- Mensajes de los Invitados -->
+        <section id="mensajes" class="mensajes">
+            <img src="Sobre.png" alt="Mensajes de los Invitados" width="150">
+            <h2>Mensajes de los Invitados</h2>
+            <form action="procesar_mensaje.php" method="POST">
+                <label for="mensaje-nombre">Nombre:</label>
+                <input type="text" id="mensaje-nombre" name="nombre" required>
+
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+                <button type="submit">Enviar Mensaje</button>
+            </form>
+            <!-- Aquí puedes mostrar los mensajes enviados -->
+            <div class="lista-mensajes">
+                <h3>Lo que dicen nuestros invitados:</h3>
+                <div class="mensaje-item">
+                    <p><strong>Juan Pérez:</strong> ¡Felicidades a los dos!</p>
+                </div>
+                <!-- Más mensajes -->
+            </div>
+        </section>
+
+        <style>
+            /* Mantenemos los estilos anteriores y agregamos: */
+            .programa-container {
+                background: #f8f9fa;
+                padding: 4rem 0;
+                width: 100%;
+            }
+
+            .programa-content {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .programa-title {
+                text-align: center;
+                font-size: 2.5rem;
+                color: #2d2d2d;
+                margin-bottom: 2rem;
+                font-family: 'Playfair Display', serif;
+                position: relative;
+            }
+
+                .programa-title:after {
+                    content: '';
+                    position: absolute;
+                    bottom: -15px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 100px;
+                    height: 3px;
+                    background: #D4AF37;
+                }
+
+            .programa-etapas {
+                display: grid;
+                gap: 2rem;
+                position: relative;
+            }
+
+            .programa-item {
+                background: white;
+                padding: 2rem;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                border-left: 4px solid #D4AF37;
+                position: relative;
+                transition: transform 0.3s ease;
+            }
+
+                .programa-item:hover {
+                    transform: translateX(10px);
+                }
+
+            .hora-destacado {
+                color: #D4AF37;
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+                display: block;
+            }
+
+            .detalle-evento {
+                color: #666;
+                font-style: italic;
+                margin-top: 0.5rem;
+            }
+        </style>
+
+        <section class="programa-container">
+            <div class="programa-content">
+                <h2 class="programa-title">Nuestro Programa de Celebración</h2>
+
+                <div class="programa-etapas">
+                    <!-- Ceremonia -->
+                    <div class="programa-item">
+                        <span class="hora-destacado">4:00pm</span>
+                        <h3>Ceremonia Nupcial</h3>
+                        <p>
+                            Terraza Hotel Vista Azul<br>
+                            <em class="detalle-evento">Vestimenta formal - Llegar 15 minutos antes</em>
+                        </p>
+                    </div>
+
+                    <!-- Cóctel -->
+                    <div class="programa-item">
+                        <span class="hora-destacado">5:00pm</span>
+                        <h3>Cóctel de Bienvenida</h3>
+                        <p>
+                            Hotel Vista Azul<br>
+                            <em class="detalle-evento">Aperitivos y bebidas</em>
+                        </p>
+                    </div>
+
+                    <!-- Entrada de los novios -->
+                    <div class="programa-item">
+                        <span class="hora-destacado">6:00pm</span>
+                        <h3>Bienvenida a los esposos</h3>
+                        <p>
+                            Hotel Vista Azul<br>
+                            <em class="detalle-evento">Entrada de los novios y el séquito, brindis de honor</em>
+                        </p>
+                    </div>
+
+                    <!-- Banquete -->
+                    <div class="programa-item">
+                        <span class="hora-destacado">6:30pm</span>
+                        <h3>Banquete Nupcial</h3>
+                        <p>
+                            Hotel Vista Azul<br>
+                            <em class="detalle-evento">Cena - bizcocho - lanzamiento ramo - liga</em>
+                        </p>
+                    </div>
+
+                    <!-- Baile -->
+                    <div class="programa-item">
+                        <span class="hora-destacado">8:00pm</span>
+                        <h3>Fiesta de Celebración</h3>
+                        <p>
+                            Terrazas del Amanecer<br>
+                            <em class="detalle-evento">Primer baile- DJ en vivo - Barra libre - Área lounge</em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preguntas frecuentes -->
+        <section id="faq" class="faq">
+            <img src="pregunta.png" alt="Preguntas Frecuentes" width="150">
+            <h2>Preguntas Frecuentes</h2>
+            <div class="faq-item">
+                <h3>¿Cuál es el código de vestimenta?</h3>
+                <p>El código de vestimenta es formal.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Si quiero darles un regalo cómo sería?</h3>
+                <p>Si deseas regalarnos algo, preferimos que sea en efectivo. </p>
+
+
+                <!-- Galería -->
+                <section id="galeria" class="galeria">
+                    <img src="camara.png" alt="Galería" width="150">
+                    <h2>Galería</h2>
+                    <div class="carousel">
+                        <img src="foto1.jpg" alt="Preboda 1">
+                        <img src="foto2.jpg" alt="Preboda 2">
+                        <img src="foto3.jpg" alt="Preboda 3">
+                        <!-- Añade más imágenes según sea necesario -->
+                    </div>
+                </section>
+
+                <!-- Pie de página -->
+                <footer class="footer">
+                    <p>Gracias por acompañarnos en este día especial</p>
+                    <p>&copy; 2025 Maria & Joshua</p>
+                </footer>
+
+                <!-- Scripts -->
+                <script>
+                    function abrirMapa() {
+                        window.open('https://www.google.com/maps/place/Hotel+Vista+Azul,+Aguadilla', '_blank');
+                    }
+
+                    function scrollToSection(id) {
+                        const section = document.getElementById(id);
+                        if (section) {
+                            window.scrollTo({
+                                top: section.offsetTop,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                </script>
+    </body>
 </html>
