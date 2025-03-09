@@ -3,583 +3,486 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación de Boda</title>
-    <!-- Enlaces a hojas de estilo y fuentes -->
+    <title>Invitación de Boda - Alejandra & Joshua</title>
+
+    <!-- Fuentes y iconos -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <!-- Incluir la librería de íconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Hoja de estilos principal -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Estilos para las hojas decorativas -->
+    <style>
+        /* Estilo base para las hojas decorativas */
+        .leaf {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: #8E6CAE;
+            opacity: 0.7;
+            z-index: 1;
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0 C70 30, 100 50, 50 100 C0 50, 30 30, 50 0' fill='%23000'/%3E%3C/svg%3E");
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0 C70 30, 100 50, 50 100 C0 50, 30 30, 50 0' fill='%23000'/%3E%3C/svg%3E");
+            mask-size: contain;
+            -webkit-mask-size: contain;
+            mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat;
+            pointer-events: none; /* Asegura que no interfieran con clics */
+        }
+
+        /* Posicionamiento de las hojas en la cabecera */
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Ajustamos el z-index del contenido de la cabecera */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Esquina superior izquierda */
+        .leaf-tl1 {
+            top: 20px;
+            left: 20px;
+            transform: rotate(45deg);
+        }
+
+        .leaf-tl2 {
+            top: 60px;
+            left: 70px;
+            transform: rotate(90deg);
+            width: 60px;
+            height: 60px;
+        }
+
+        /* Esquina superior derecha */
+        .leaf-tr1 {
+            top: 20px;
+            right: 20px;
+            transform: rotate(-45deg);
+        }
+
+        .leaf-tr2 {
+            top: 60px;
+            right: 70px;
+            transform: rotate(-90deg);
+            width: 60px;
+            height: 60px;
+        }
+
+        /* Parte inferior */
+        .leaf-bl1 {
+            bottom: 20px;
+            left: 20px;
+            transform: rotate(135deg);
+        }
+
+        .leaf-bl2 {
+            bottom: 60px;
+            left: 70px;
+            transform: rotate(180deg);
+            width: 60px;
+            height: 60px;
+        }
+
+        .leaf-br1 {
+            bottom: 20px;
+            right: 20px;
+            transform: rotate(-135deg);
+        }
+
+        .leaf-br2 {
+            bottom: 60px;
+            right: 70px;
+            transform: rotate(-180deg);
+            width: 60px;
+            height: 60px;
+        }
+
+        /* Centro superior e inferior */
+        .leaf-tc {
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(0deg);
+        }
+
+        .leaf-bc {
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(180deg);
+        }
+
+        /* Centro izquierda y derecha */
+        .leaf-lc {
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%) rotate(90deg);
+        }
+
+        .leaf-rc {
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%) rotate(-90deg);
+        }
+
+        /* Hojas decorativas adicionales */
+        .leaf-d1 {
+            top: 33%;
+            left: 80px;
+            transform: rotate(60deg);
+            width: 50px;
+            height: 50px;
+        }
+
+        .leaf-d2 {
+            top: 33%;
+            right: 80px;
+            transform: rotate(-60deg);
+            width: 50px;
+            height: 50px;
+        }
+
+        .leaf-d3 {
+            top: 66%;
+            left: 50px;
+            transform: rotate(120deg);
+            width: 60px;
+            height: 60px;
+        }
+
+        .leaf-d4 {
+            top: 66%;
+            right: 50px;
+            transform: rotate(-120deg);
+            width: 60px;
+            height: 60px;
+        }
+    </style>
 </head>
 <body>
+    <!-- Cabecera principal -->
+    <header class="hero">
+        <!-- Hojas decorativas en la cabecera -->
+        <div class="leaf leaf-tl1"></div>
+        <div class="leaf leaf-tl2"></div>
+        <div class="leaf leaf-tr1"></div>
+        <div class="leaf leaf-tr2"></div>
+        <div class="leaf leaf-bl1"></div>
+        <div class="leaf leaf-bl2"></div>
+        <div class="leaf leaf-br1"></div>
+        <div class="leaf leaf-br2"></div>
+        <div class="leaf leaf-tc"></div>
+        <div class="leaf leaf-bc"></div>
+        <div class="leaf leaf-lc"></div>
+        <div class="leaf leaf-rc"></div>
+        <div class="leaf leaf-d1"></div>
+        <div class="leaf leaf-d2"></div>
+        <div class="leaf leaf-d3"></div>
+        <div class="leaf leaf-d4"></div>
 
-    <!-- Sección principal -->
-    <section class="hero1">
-        <h1>
-            <span class="fuente-uno">Alejandra</span> <br>
-            <span class="fuente-uno">y</span> <br>
-            <span class="fuente-uno">Joshua</span>
-        </h1>
-
-        <!-- Encabezado -->
-        <header class="header">
-            <img src="anillos.png" alt="anillos" width="150">
-            <h1>Tenemos una noticia ¡Nos casamos!</h1>
-            <section class="hero2">
-                <h2>
-                    <span class="fuente-dos">¡Con mucha alegría anunciamos la fecha de nuestra boda! Queremos compartir este momento único y especial con todos nuestros seres queridos y amigos. Será un día inolvidable, y nos encantaría contar con tu presencia. ¡Te esperamos con entusiasmo para celebrar juntos este nuevo capítulo de nuestras vidas!</span>
-                </h2>
-
-            </section>
-
-            <!-- Sección del temporizador -->
-            <section class="timer-section">
-                <h2>¡Faltan solo!</h2>
-                <div id="countdown">
-                    <span id="days">00</span> días
-                    <span id="hours">00</span> horas
-                    <span id="minutes">00</span> minutos
-                    <span id="seconds">00</span> segundos
-                </div>
-
-                <script>
-                    // Configurar la fecha objetivo (17 de mayo de 2025)
-                    const targetDate = new Date('2025-05-17T16:00:00').getTime();
-
-                    function updateTimer() {
-                        const now = new Date().getTime();
-                        const timeLeft = targetDate - now;
-
-                        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-                        document.getElementById('days').textContent = days.toString().padStart(2, '0');
-                        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-
-                        if (timeLeft < 0) {
-                            clearInterval(timerInterval);
-                            document.getElementById('countdown').innerHTML = "¡La boda ha comenzado!";
-                        }
-                    }
-
-                    // Actualizar el temporizador inmediatamente y luego cada segundo
-                    updateTimer();
-                    const timerInterval = setInterval(updateTimer, 1000);
-                </script>
-            </section>
-
-
-    </section>
-
-    <!-- Sección de Invitación -->
-    <section class="hero">
-        <h1>
-            <span class="fuente-dos">¡Estás cordialmente invitado!</span>
-        </h1>
-        <h2>Únete a nosotros para celebrar nuestro amor</h2>
-        <button class="cta-btn" onclick="scrollToSection('rsvp')">Confirma tu asistencia</button>
-    </section>
-
-    </section>
-    <nav>
-        <ul class="nav">
-            <li><a href="#detalles">Detalles</a></li>
-            <li><a href="#transporte">Transporte</a></li>
-            <li><a href="#blog">Actualizaciones</a></li>
-            <li><a href="#rsvp">RSVP</a></li>
-            <li><a href="#mensajes">Mensajes</a></li>
-            <li><a href="#galeria">Galería</a></li>
-            <li><a href="#faq">FAQ</a></li>
-        </ul>
-    </nav>
+        <div class="hero-content">
+            <i class="fas fa-gem header-icon"></i>
+            <h1 class="titulo-principal">
+                <span class="nombre">Alejandra y Joshua</span>
+            </h1>
+            <p class="subtitulo">¡Nos casamos!</p>
+        </div>
     </header>
 
-    <!-- Detalles del evento -->
-    <section id="detalles" class="detalles">
-        <img src="brujula.png" alt="Detalles del Evento" width="150">
-        <h2>Detalles del Evento</h2>
-        <p>📅 <strong>Cuándo:</strong> Sábado, 17 de Mayo de 2025</p>
-        <p>📍 <strong>Dónde:</strong> Hotel Vista Azul, Aguadilla [84 Ave Montemar, Aguadilla]</p>
-        <p>⏰ <strong>Hora:</strong> 4:00pm</p>
-        <p>🎩 <strong>Código de vestimenta:</strong> Formal</p>
-        <button class="cta-btn" onclick="abrirMapa()">Abrir en Maps</button>
-    </section>
-
-    <!-- Información de Transporte -->
-    <section id="transporte" class="transporte">
-        <img src="Transporte.png" alt="Transporte" width="150">
-        <h2>Información de Transporte</h2>
-        <p> Puedes estacionarte libre de costo en las facilidades del hotel. Un segundo estacionamiento estará disponible donde un transporte te llevará hasta el hotel para facilitar tu llegada. A continuación encontrarás la información del transporte:</p>
-        <ul>
-            <li><strong>Autobús:</strong> Línea de autobús que llega al Hotel Vista Azul.</li>
-            <li><strong>Estacionamiento:</strong> Disponible en el lugar del evento.</li>
+    <!-- Navegación principal -->
+    <nav class="nav-container">
+        <ul class="nav-menu">
+            <li><a href="#detalles"><i class="fas fa-info-circle"></i> Detalles</a></li>
+            <li><a href="#programa"><i class="fas fa-clock"></i> Programa</a></li>
+            <li><a href="#rsvp"><i class="fas fa-check-circle"></i> Confirmar</a></li>
+            <li><a href="#faq"><i class="fas fa-question-circle"></i> Preguntas</a></li>
+            <li><a href="#galeria"><i class="fas fa-camera"></i> Galería</a></li>
         </ul>
+    </nav>
+
+    <!-- Sección de cuenta regresiva -->
+    <section class="countdown-section">
+        <div class="countdown-content">
+            <h2><i class="fas fa-hourglass-start"></i> ¡Faltan solo!</h2>
+            <div id="countdown">
+                <div class="time-unit">
+                    <span id="days">00</span>
+                    <small>Días</small>
+                </div>
+                <div class="time-unit">
+                    <span id="hours">00</span>
+                    <small>Horas</small>
+                </div>
+                <div class="time-unit">
+                    <span id="minutes">00</span>
+                    <small>Minutos</small>
+                </div>
+                <div class="time-unit">
+                    <span id="seconds">00</span>
+                    <small>Segundos</small>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Confirmación de Asistencia</title>
-        <style>
-            :root {
-                --primary: #6c5ce7;
-                --secondary: #a8a5e6;
-                --error: #ff5252;
-                --success: #00b894;
-            }
-
-            body {
-                font-family: 'Segoe UI', sans-serif;
-                background: #f8f9fa;
-                margin: 2rem;
-                padding: 2rem;
-            }
-
-            .container {
-                max-width: 1000px;
-                margin: 2rem;
-                background: white;
-                padding: 2rem;
-                border-radius: 15px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-
-            }
-
-            .search-box {
-                text-align: center;
-                margin-bottom: 2rem;
-            }
-
-            .input-group {
-                display: flex;
-                gap: 1rem;
-                justify-content: center;
-                margin-bottom: 1rem;
-            }
-
-            input[type="text"] {
-                padding: 12px;
-                border: 2px solid #ddd;
-                border-radius: 8px;
-                width: 250px;
-                transition: all 0.3s;
-            }
-
-                input[type="text"]:focus {
-                    border-color: var(--primary);
-                    box-shadow: 0 0 8px rgba(108, 92, 231, 0.2);
-                    outline: none;
-                }
-
-            button {
-                padding: 12px 24px;
-                background: #d4af37;
-                color: white;
-                border: none;
-                border-radius: 8px;
-                cursor: pointer;
-                transition: all 0.3s;
-            }
-
-                button:hover {
-                    background: #5b4bc4;
-                    transform: translateY(-2px);
-                    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
-                }
-
-            .form-container {
-                display: none;
-                animation: fadeIn 0.5s ease;
-            }
-
-            @keyframes fadeIn {
-                from {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            .guest-field {
-                margin-bottom: 1.5rem;
-                padding: 1rem;
-                background: #f8f9fa;
-                border-radius: 8px;
-            }
-
-            .error-message {
-                color: var(--error);
-                text-align: center;
-                margin: 1rem 0;
-                padding: 1rem;
-                background: #ffecec;
-                border-radius: 8px;
-                display: none;
-            }
-
-            textarea {
-                width: 100%;
-                padding: 12px;
-                border: 2px solid #ddd;
-                border-radius: 8px;
-                margin: 1rem 0;
-                resize: vertical;
-            }
-
-            @media (max-width: 768px) {
-                .input-group {
-                    flex-direction: column;
-                }
-
-                input[type="text"] {
-                    width: 100%;
-                }
-
-                button {
-                    width: 100%;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-
-            <div class="input-group" style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
-                <img src="party.png" alt="Mensajes de los Invitados" width="150">
-                <h1 style="color: #000000; margin: 0;">Confirmación de asistencia</h1>
-                <div style="display: flex; gap: 0.5rem;">
-                    <input type="text" id="inputID" placeholder="Ingresa tu ID de invitación">
-                    <button onclick="buscarInvitado()">Buscar</button>
-                </div>
-                <p class="error-message" id="mensajeError"></p>
-            </div>
-
-        <form id="formRSVP" class="form-container" action="procesar_rsvp.php" method="POST">
-            <input type="hidden" id="invitadoID" name="invitadoID">
-            <h2 style="color: var(#000000); ">Bienvenido, <span id="nombreInvitado"></span></h2>
-            <p>Invitación válida para: <strong id="numeroInvitados"></strong> personas (ingresa tu nombre en invitado 1)</p>
-
-            <div id="camposInvitados"></div>
-
-            <label for="comentarios">Comentarios:</label>
-            <textarea id="comentarios" name="comentarios" rows="4"></textarea>
-
-            <button type="submit">Confirmar Asistencia</button>
-        </form>
+    <!-- Sección de detalles del evento -->
+    <section id="detalles" class="details-section">
+        <div class="section-header">
+            <i class="fas fa-map-marked-alt section-icon"></i>
+            <h2 class="section-title">Detalles del evento</h2>
         </div>
 
-        <script>
-            function buscarInvitado() {
-                const inputID = document.getElementById('inputID').value;
-                const errorElement = document.getElementById('mensajeError');
-                const form = document.getElementById('formRSVP');
-
-                // Resetear estado
-                errorElement.style.display = 'none';
-                form.style.display = 'none';
-
-                // Validación básica
-                if (!inputID) {
-                    mostrarError('Por favor ingresa un ID válido');
-                    return;
-                }
-
-                // Simular base de datos
-                const invitado = obtenerInvitado(inputID);
-
-                if (!invitado) {
-                    mostrarError('ID no encontrado. Verifica el número.');
-                    return;
-                }
-
-                // Mostrar formulario
-                mostrarFormulario(invitado);
-            }
-
-            function mostrarError(mensaje) {
-                const errorElement = document.getElementById('mensajeError');
-                errorElement.textContent = mensaje;
-                errorElement.style.display = 'block';
-            }
-
-            function mostrarFormulario(invitado) {
-                document.getElementById('nombreInvitado').textContent = invitado.nombre;
-                document.getElementById('numeroInvitados').textContent = invitado.invitados;
-                document.getElementById('invitadoID').value = invitado.id;
-
-                const campos = document.getElementById('camposInvitados');
-                campos.innerHTML = '';
-
-                for (let i = 0; i < invitado.invitados; i++) {
-                    campos.innerHTML += `
-                                            <div class="guest-field">
-                                                <label>Invitado ${i + 1}:</label>
-                                                <input type="text" name="invitado_${i}"
-                                                       placeholder="Nombre completo" required>
-                                            </div>
-                                        `;
-                }
-
-                document.getElementById('formRSVP').style.display = 'block';
-            }
-
-            // Base de datos simulada
-            function obtenerInvitado(id) {
-                const db = {
-                    '001': { id: '001', nombre: 'Ana López', invitados: 2 },
-                    '002': { id: '002', nombre: 'Carlos Ruiz', invitados: 3 },
-                    '003': { id: '003', nombre: 'María Gómez', invitados: 1 }
-                };
-                return db[id] || null;
-            }
-
-            // Animación al enviar el formulario
-            document.getElementById('formRSVP').addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                // Simular envío
-<? php
-// Configuración básica
-$destinatario = "maria.martinez28@upr.edu"; //
-                $asunto = "Nueva confirmación de asistencia";
-
-                // Recoger datos del formulario
-                $invitadoID = $_POST['invitadoID'];
-                $comentarios = $_POST['comentarios'];
-                $mensaje = "ID del invitado: $invitadoID\n\n";
-
-                // Agregar nombres de invitados
-                foreach($_POST as $key => $value) {
-                    if (strpos($key, 'invitado_') === 0) {
-                        $mensaje.= "Invitado ".substr($key, 9). ": $value\n";
-                    }
-                }
-
-                $mensaje.= "\nComentarios:\n$comentarios";
-
-                // Cabeceras para formato y codificación
-                $headers = "From: confirmaciones@tudominio.com". "\r\n".
-           "Reply-To: no-responder@tudominio.com". "\r\n".
-           "Content-Type: text/plain; charset=UTF-8";
-
-                // Enviar correo
-                if (mail($destinatario, $asunto, $mensaje, $headers)) {
-    echo "¡Confirmación exitosa! 🎉";
-                } else {
-    echo "Error al enviar la confirmación. Inténtalo de nuevo.";
-                }
-?>
-
-            });
-        </script>
-
-        </section>
-
-        <!-- Mensajes de los Invitados -->
-        <section id="mensajes" class="mensajes">
-            <img src="Sobre.png" alt="Mensajes de los Invitados" width="150">
-            <h2>Mensajes de los Invitados</h2>
-            <form action="procesar_mensaje.php" method="POST">
-                <label for="mensaje-nombre">Nombre:</label>
-                <input type="text" id="mensaje-nombre" name="nombre" required>
-
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
-
-                <button type="submit">Enviar Mensaje</button>
-            </form>
-            <!-- Aquí puedes mostrar los mensajes enviados -->
-            <div class="lista-mensajes">
-                <h3>Lo que dicen nuestros invitados:</h3>
-                <div class="mensaje-item">
-                    <p><strong>Juan Pérez:</strong> ¡Felicidades a los dos!</p>
-                </div>
-                <!-- Más mensajes -->
+        <div class="details-grid">
+            <div class="detail-item">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>Fecha</h3>
+                <p>17 de Mayo 2025</p>
             </div>
-        </section>
+            <div class="detail-item">
+                <i class="fas fa-clock"></i>
+                <h3>Hora</h3>
+                <p>4:00 PM</p>
+            </div>
+            <div class="detail-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Lugar</h3>
+                <p>Hotel Vista Azul, Aguadilla</p>
+                <a href="https://www.google.com/maps/place/Hotel+Vista+Azul/data=!4m2!3m1!1s0x0:0x83a1c2b548810510?sa=X&ved=1t:2428&ictx=111"
+                   class="map-btn"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <i class="fas fa-directions"></i> Cómo llegar
+                </a>
+            </div>
+            <div class="detail-item">
+                <i class="fas fa-tshirt"></i>
+                <h3>Vestimenta</h3>
+                <p>Formal (Por favor lleva zapatos cómodos)</p>
+            </div>
+        </div>
+    </section>
 
-        <style>
-            /* Mantenemos los estilos anteriores y agregamos: */
-            .programa-container {
-                background: #f8f9fa;
-                padding: 4rem 0;
-                width: 100%;
-            }
+    <!-- Sección del Programa -->
+    <section id="programa" class="programa-section">
+        <div class="section-header">
+            <i class="fas fa-glass-cheers section-icon"></i>
+            <h2 class="section-title">Nuestro Programa</h2>
+        </div>
 
-            .programa-content {
-                max-width: 800px;
-                margin: 0 auto;
-                padding: 0 20px;
-            }
-
-            .programa-title {
-                text-align: center;
-                font-size: 2.5rem;
-                color: #2d2d2d;
-                margin-bottom: 2rem;
-                font-family: 'Playfair Display', serif;
-                position: relative;
-            }
-
-                .programa-title:after {
-                    content: '';
-                    position: absolute;
-                    bottom: -15px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    width: 100px;
-                    height: 3px;
-                    background: #D4AF37;
-                }
-
-            .programa-etapas {
-                display: grid;
-                gap: 2rem;
-                position: relative;
-            }
-
-            .programa-item {
-                background: white;
-                padding: 2rem;
-                border-radius: 10px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                border-left: 4px solid #D4AF37;
-                position: relative;
-                transition: transform 0.3s ease;
-            }
-
-                .programa-item:hover {
-                    transform: translateX(10px);
-                }
-
-            .hora-destacado {
-                color: #D4AF37;
-                font-size: 1.2rem;
-                font-weight: 600;
-                margin-bottom: 0.5rem;
-                display: block;
-            }
-
-            .detalle-evento {
-                color: #666;
-                font-style: italic;
-                margin-top: 0.5rem;
-            }
-        </style>
-
-        <section class="programa-container">
-            <div class="programa-content">
-                <h2 class="programa-title">Nuestro Programa de Celebración</h2>
-
-                <div class="programa-etapas">
-                    <!-- Ceremonia -->
-                    <div class="programa-item">
-                        <span class="hora-destacado">4:00pm</span>
-                        <h3>Ceremonia Nupcial</h3>
-                        <p>
-                            Terraza Hotel Vista Azul<br>
-                            <em class="detalle-evento">Vestimenta formal - Llegar 15 minutos antes</em>
-                        </p>
+        <div class="programa-content">
+            <!-- Esta es la línea de tiempo -->
+            <div class="timeline">
+                <!-- Elemento de programa 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge">
+                        <i class="fas fa-ring"></i>
                     </div>
-
-                    <!-- Cóctel -->
-                    <div class="programa-item">
-                        <span class="hora-destacado">5:00pm</span>
-                        <h3>Cóctel de Bienvenida</h3>
-                        <p>
-                            Hotel Vista Azul<br>
-                            <em class="detalle-evento">Aperitivos y bebidas</em>
-                        </p>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <span class="timeline-hora">4:00pm</span>
+                            <h3>Ceremonia</h3>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Terraza del hotel</p>
+                        </div>
                     </div>
+                </div>
 
-                    <!-- Entrada de los novios -->
-                    <div class="programa-item">
-                        <span class="hora-destacado">6:00pm</span>
-                        <h3>Bienvenida a los esposos</h3>
-                        <p>
-                            Hotel Vista Azul<br>
-                            <em class="detalle-evento">Entrada de los novios y el séquito, brindis de honor</em>
-                        </p>
+                <!-- Elemento de programa 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge">
+                        <i class="fas fa-cocktail"></i>
                     </div>
-
-                    <!-- Banquete -->
-                    <div class="programa-item">
-                        <span class="hora-destacado">6:30pm</span>
-                        <h3>Banquete Nupcial</h3>
-                        <p>
-                            Hotel Vista Azul<br>
-                            <em class="detalle-evento">Cena - bizcocho - lanzamiento ramo - liga</em>
-                        </p>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <span class="timeline-hora">5:00pm</span>
+                            <h3>Cóctel de Bienvenida</h3>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Aperitivos y Bebidas</p>
+                        </div>
                     </div>
+                </div>
 
-                    <!-- Baile -->
-                    <div class="programa-item">
-                        <span class="hora-destacado">8:00pm</span>
-                        <h3>Fiesta de Celebración</h3>
-                        <p>
-                            Terrazas del Amanecer<br>
-                            <em class="detalle-evento">Primer baile- DJ en vivo - Barra libre - Área lounge</em>
-                        </p>
+                <!-- Elemento de programa 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <span class="timeline-hora">6:30pm</span>
+                            <h3>Banquete Nupcial</h3>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Salón Principal</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Elemento de programa 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <span class="timeline-hora">8:00pm</span>
+                            <h3>Celebración</h3>
+                        </div>
+                        <div class="timeline-body">
+                            <p>DJ en vivo y Barra Libre</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Preguntas frecuentes -->
-        <section id="faq" class="faq">
-            <img src="pregunta.png" alt="Preguntas Frecuentes" width="150">
-            <h2>Preguntas Frecuentes</h2>
-            <div class="faq-item">
-                <h3>¿Cuál es el código de vestimenta?</h3>
-                <p>El código de vestimenta es formal.</p>
+    <!-- Sección RSVP -->
+    <section id="rsvp" class="rsvp-section">
+        <div class="section-header">
+            <i class="fas fa-envelope-open-text section-icon"></i>
+            <!-- Agregar ID específico para este título -->
+            <h2 id="rsvp-titulo" class="section-title">Confirma tu asistencia</h2>
+            <p>Por favor confirma antes del 30 de marzo, 2025</p>
+        </div>
+
+        <form id="rsvpForm" class="rsvp-form">
+            <div class="form-group">
+                <label for="nombre"><i class="fas fa-user"></i> Nombre completo:</label>
+                <input type="text" id="nombre" name="nombre" required>
             </div>
+
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Correo electrónico:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="asistentes"><i class="fas fa-users"></i> Número de asistentes (incluyete en la suma total e indica el número según tu invitación):</label>
+                <select id="asistentes" name="asistentes" required>
+                    <option value="1">1 persona (yo)</option>
+                    <option value="2">2 personas (yo + 1 invitado)</option>
+                    <option value="3">3 personas (yo + 2 invitados)</option>
+                    <option value="4">4 personas (yo + 3 invitados)</option>
+                    <option value="5">5 personas (yo + 4 invitados)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i> Confirmar asistencia
+            </button>
+        </form>
+
+        <div id="confirmacionMensaje" class="confirmation-message"></div>
+    </section>
+
+    <!-- Sección de FAQ -->
+    <section id="faq" class="faq-section">
+        <div class="section-header">
+            <i class="fas fa-question-circle section-icon"></i>
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+        </div>
+
+        <div class="faq-grid">
             <div class="faq-item">
-                <h3>¿Si quiero darles un regalo cómo sería?</h3>
-                <p>Si deseas regalarnos algo, preferimos que sea en efectivo. </p>
+                <div class="faq-pregunta">
+                    <i class="fas fa-sun"></i>
+                    <h3>¿El estacionamiento tiene algún costo?</h3>
+                </div>
+                <p>No. El estacionamiento está incluído. Si el mismo se llena, el personal del estacionamiento te orientará para que llegues a otro estacionamiento cercano, en donde ofrecemos servicio de shuttle para llegar a la actividad. Llega temprano.</p>
+            </div>
 
+            <div class="faq-item">
+                <div class="faq-pregunta">
+                    <i class="fas fa-gift"></i>
+                    <h3>¿Tendrán lista de regalos?</h3>
+                </div>
+                <p>No. Si deseas darnos un regalo apreciamos que sea en efectivo. Encontrarás una caja en la actividad en dónde podrás depositar tu sobre.</p>
+            </div>
 
-                <!-- Galería -->
-                <section id="galeria" class="galeria">
-                    <img src="camara.png" alt="Galería" width="150">
-                    <h2>Galería</h2>
-                    <div class="carousel">
-                        <img src="foto1.jpg" alt="Preboda 1">
-                        <img src="foto2.jpg" alt="Preboda 2">
-                        <img src="foto3.jpg" alt="Preboda 3">
-                        <!-- Añade más imágenes según sea necesario -->
-                    </div>
-                </section>
+            <div class="faq-item">
+                <div class="faq-pregunta">
+                    <i class="fas fa-child"></i>
+                    <h3>¿Esta actividad es apta para niños?</h3>
+                </div>
+                <p>Aunque amamos los niños, esta actividad es exclusiva para adultos. ¡Agradecemos tu comprensión!</p>
+            </div>
 
-                <!-- Pie de página -->
-                <footer class="footer">
-                    <p>Gracias por acompañarnos en este día especial</p>
-                    <p>&copy; 2025 Maria & Joshua</p>
-                </footer>
+            <div class="faq-item">
+                <div class="faq-pregunta">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>¿Hasta qué fecha puedo confirmar mi asistencia?</h3>
+                </div>
+                <p>Te pedimos que nos apoyes confirmando tu asistencia lo más pronto posible. El último día para confirmar asistencia será el 30 de marzo, 2025.</p>
+            </div>
 
-                <!-- Scripts -->
-                <script>
-                    function abrirMapa() {
-                        window.open('https://www.google.com/maps/place/Hotel+Vista+Azul,+Aguadilla', '_blank');
-                    }
+            <div class="faq-item">
+                <div class="faq-pregunta">
+                    <i class="fas fa-user-times"></i>
+                    <h3>¿Puedo llevar un acompañante no mencionado en la invitación?</h3>
+                </div>
+                <p>La actividad tiene una capacidad limitada, por lo que no se permitirán acompañantes no incluidos en la invitación.</p>
+            </div>
 
-                    function scrollToSection(id) {
-                        const section = document.getElementById(id);
-                        if (section) {
-                            window.scrollTo({
-                                top: section.offsetTop,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-                </script>
-    </body>
+            <div class="faq-item">
+                <div class="faq-pregunta">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>¿Hay algún color que debamos evitar en la vestimenta?</h3>
+                </div>
+                <p>Por favor evita vestir de blanco, lila o violeta.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pregunta">
+                    <i class="fas fa-gift"></i>
+                    <h3>¿Me puedo llevar la decoración al finalizar la actividad?</h3>
+                </div>
+                <p>Podrás llevarte los arreglos florales de las mesas de invitados, recuerda dejar las bases.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Galería -->
+    <section id="galeria" class="galeria-section">
+        <div class="section-header">
+            <i class="fas fa-camera-retro section-icon"></i>
+            <h2 class="section-title">Galería</h2>
+        </div>
+
+        <div class="galeria-grid">
+            <div class="galeria-item">
+                <img src="DSC_3246.jpg" alt="Imagen 1">
+                <div class="galeria-overlay"></div>
+            </div>
+
+            <div class="galeria-item">
+                <img src="DSC_3254.jpg" alt="Imagen 2">
+                <div class="galeria-overlay"></div>
+            </div>
+
+            <div class="galeria-item">
+                <img src="DSC_3290.jpg" alt="Imagen 3">
+                <div class="galeria-overlay"></div>
+            </div>
+        </div>
+    </section>
+    <!-- Popup de Confirmación -->
+    <div id="confirmationOverlay" class="confirmation-overlay">
+        <div class="confirmation-box">
+            <i class="fas fa-check-circle confirmation-icon"></i>
+            <h2>¡Gracias por confirmar!</h2>
+            <p id="confirmationDetails"></p>
+            <button onclick="cerrarPopup()" class="close-btn">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
 </html>
