@@ -95,8 +95,11 @@ function setupBackgroundMusic() {
 
         // Agregar fuente de audio - Reemplaza 'ruta/a/tu/musica.mp3' con la ruta real a tu archivo de música
         const sourceElement = document.createElement('source');
-        sourceElement.src = 'andres-cepeda-por-el-resto-de-mi-vida-letra.mp3'; // 
+        sourceElement.src = 'audio/andres-cepeda-por-el-resto-de-mi-vida-letra.mp3';
         sourceElement.type = 'audio/mpeg';
+        audioElement.autoplay = true;
+        audioElement.muted = true;
+
 
         audioElement.appendChild(sourceElement);
         document.body.appendChild(audioElement);
