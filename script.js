@@ -91,7 +91,6 @@ function setupBackgroundMusic() {
         audioElement.volume = 0.5; // Volumen al 50%
         // Agregar atributos para intentar permitir reproducción automática
         audioElement.autoplay = true;
-        audioElement.muted = true; // Inicialmente silenciado para mayor probabilidad de autoplay
 
         // Agregar fuente de audio - Reemplaza 'ruta/a/tu/musica.mp3' con la ruta real a tu archivo de música
         const sourceElement = document.createElement('source');
