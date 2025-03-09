@@ -1,0 +1,31 @@
+<?php
+// Configuración básica
+$destinatario = "tucorreo@ejemplo.com"; // ¡Cambia esto!
+$asunto = "Nueva confirmación de asistencia";
+
+// Recoger datos del formulario
+$invitadoID = $_POST['invitadoID'];
+$comentarios = $_POST['comentarios'];
+$mensaje = "ID del invitado: $invitadoID\n\n";
+
+// Agregar nombres de invitados
+foreach ($_POST as $key => $value) {
+    if (strpos($key, 'invitado_') === 0) {
+        $mensaje .= "Invitado " . substr($key, 9) . ": $value\n";
+    }
+}
+
+$mensaje .= "\nComentarios:\n$comentarios";
+
+// Cabeceras para formato y codificación
+$headers = "From: confirmaciones@tudominio.com" . "\r\n" .
+           "Reply-To: no-responder@tudominio.com" . "\r\n" .
+           "Content-Type: text/plain; charset=UTF-8";
+
+// Enviar correo
+if (mail($destinatario, $asunto, $mensaje, $headers)) {
+    echo "¡Confirmación exitosa! 🎉";
+} else {
+    echo "Error al enviar la confirmación. Inténtalo de nuevo.";
+}
+?>
