@@ -1,648 +1,1381 @@
 /* =========================================================
-   General Styles
+   Variables y Estilos Generales - Refinados
 ========================================================= */
-body {
-    font-family: 'Lato', sans-serif; /* Fuente base */
+:root {
+    --primary-color: #543d7c;
+    --primary-dark: #3a2856;
+    --primary-light: white;
+    --accent-color: #d4af37;
+    --accent-light: white;
+    --secondary-color: #D3E5D5;
+    --secondary-dark: #a8c7ab;
+    --text-color: #333;
+    --text-light: #666;
+    --text-medium: #444; /* Color intermedio para mejor legibilidad */
+    --background-light: #f9f8fc;
+    --white: #ffffff;
+    --font-body: 'Montserrat', sans-serif;
+    --font-heading: 'Playfair Display', serif;
+    --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --radius-sm: 5px;
+    --radius-md: 10px;
+    --radius-lg: 15px;
+}
+
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: #333;
-    background-color: #f8f8f8;
-    font-size: 18px; /* Tamaño de fuente base ajustado a 18px */
-    text-decoration-color: #563E7A;
-    line-height: 1.5; /* Aumento el espacio entre las líneas para mejorar la legibilidad */
-    text-align: center; /* Alineación de texto por defecto */
 }
 
-a {
-    color: #563E7A; /* Mantiene el color de texto por defecto para los enlaces */
-    transition: color 0.3s ease;
+body {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    background-color: var(--background-light);
+    line-height: 1.6;
+    font-size: 1rem;
+    overflow-x: hidden;
 }
 
-    a:hover {
-        color: #d4af37; /* Cambio de color al pasar el cursor */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+section {
+    position: relative;
+    padding: 6rem 2rem;
+}
+
+/* Transiciones mejoradas entre secciones */
+.section-divider {
+    height: 120px;
+    margin-top: -60px;
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.divider-curve {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+    .divider-curve svg {
+        position: relative;
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 100px;
+        filter: drop-shadow(0px -2px 3px rgba(0,0,0,0.05));
     }
 
-@font-face {
-    font-family: 'Allura';
-    src: url('fonts/Allura-Regular.woff2') format('woff2'), url('fonts/Allura-Regular.woff') format('woff'), url('fonts/Allura-Regular.ttf') format('truetype');
-    font-style: normal;
-    font-weight: normal;
-}
-/* =========================================================
-   Navegación
-========================================================= */
-.nav {
-    list-style: none; /* Elimina los puntos de la lista */
-    padding: 0; /* Elimina el padding predeterminado */
-    margin: 0; /* Elimina el margen predeterminado */
-    display: flex; /* Alinea los elementos en una fila */
-    justify-content: center; /* Centra los elementos horizontalmente */
-    line-height: 3.5; /* Aumento el espacio entre las líneas para mejorar la legibilidad */
+/* Decoraciones para transiciones entre secciones */
+.divider-decoration {
+    position: absolute;
+    left: 50%;
+    bottom: -30px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    z-index: 10;
 }
 
-    .nav li {
-        margin: 0 15px; /* Espacio entre los elementos de la lista */
+    .divider-decoration i {
+        color: var(--secondary-color);
+        font-size: 1.8rem;
     }
 
-    .nav a {
-        font-weight: bold; /* Texto en negrita */
-        font-size: 1.4em; /* Tamaño de la fuente */
+/* Sistema de borde decorativo entre secciones */
+section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+    opacity: 0.4;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.section-title {
+    color: var(--primary-color);
+    font-size: 2.8rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    display: inline-block;
+}
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(to right, var(--secondary-color), var(--secondary-color));
+        border-radius: 3px;
+        display: block;
     }
 
+/* Solución específica para la sección RSVP */
+.rsvp-title::after {
+    display: none;
+}
+
+.rsvp-line {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, var(--accent-color), var(--primary-light));
+    margin: 15px auto 25px;
+    border-radius: 3px;
+}
+
+.section-subtitle {
+    color: var(--text-medium);
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 2rem auto 0;
+    line-height: 1.8;
+}
+
+.section-icon {
+    font-size: 2.2rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    background: rgba(212, 175, 55, 0.1);
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 8px rgba(212, 175, 55, 0.05);
+}
+
 /* =========================================================
-   Tipografías Personalizadas
+   Cabecera Hero - Fondo verde claro
 ========================================================= */
-
-.fuente-uno {
-    font-family: 'Allura', cursive;
-    font-size: 2.8em; /* Aumenta el tamaño para mayor elegancia */
-    color: #333;
-    line-height: 1.5;
-    font-weight: normal;
-    text-align: center; /* Centra los elementos horizontalmente */
-    background-color: #f8f8f8;
-}
-
-.fuente-dos {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.7em; /* Tamaño de fuente más pequeño pero claro */
-    color: #555;
-    font-weight: normal;
-    text-align: center; /* Centra los elementos horizontalmente */
-    line-height: 1.0;
-}
-
-/* =========================================================
-   Hero Section
-========================================================= */
-.hero1 img {
-    margin-bottom: 5px;
-}
-
-.hero1 h1 {
-    margin-bottom: 5px;
-}
-
-.hero1 h2 {
-    font-size: 1.5em;
-    color: #555;
-}
-
 .hero {
+    position: relative;
+    padding: 8rem 1rem 7rem;
+    background: linear-gradient(rgba(58, 40, 86, 0.94), rgba(58, 40, 86, 0.94)), url('fondo-hero.jpg') center/cover fixed;
     text-align: center;
-    color: #333;
-    padding: 50px 30px;
-    background-color: #BDD1C4;
+    overflow: hidden;
 }
 
-    .hero h1 {
-        font-size: 2em;
-        margin-bottom: 10px;
-        font-family: 'Montserrat', 'Baguet Script', sans-serif;
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
     }
 
-    .hero h2 {
-        font-size: 1em;
-        margin-bottom: 10px;
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.header-icon {
+    font-size: 3.5rem;
+    color: var(--white);
+    margin-bottom: 2.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
     }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.titulo-principal {
+    font-family: 'Allura', cursive;
+    font-size: 5rem;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Separador claramente visible con el mismo estilo que los nombres */
+.separador {
+    display: inline-block;
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin: 0 1rem;
+    position: relative;
+    z-index: 2;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.7);
+    line-height: 1;
+}
+
+    /* Para asegurar que el símbolo & no tenga elementos que lo oculten */
+    .separador::before,
+    .separador::after {
+        display: none;
+    }
+
+/* Aplicar el mismo estilo a todos los componentes del título */
+.nombre, .separador {
+    color: var(--white);
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.subtitulo {
+    font-size: 1.7rem;
+    color: var(--white);
+    letter-spacing: 0.12em;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+}
 
 /* =========================================================
-   Botones de Llamada a la Acción
+   Navegación Principal
 ========================================================= */
-.cta-btn {
-    background-color: #d4af37;
-    color: white;
+.nav-container {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+    .nav-container.scrolled {
+        box-shadow: var(--shadow-md);
+    }
+
+.nav-menu {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 1.2rem 1rem;
+    margin: 0;
+}
+
+    .nav-menu li {
+        margin: 0 1.8rem;
+        position: relative;
+    }
+
+    .nav-menu a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: color 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 0.9rem;
+    }
+
+        .nav-menu a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+/* Botón móvil */
+.mobile-toggle {
+    display: none;
+    background: none;
     border: none;
-    padding: 15px 30px;
+    font-size: 1.5rem;
+    color: var(--text-color);
     cursor: pointer;
-    font-size: 1em;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
 }
-
-    .cta-btn:hover {
-        background-color: #b89c2e;
-    }
 
 /* =========================================================
-   Temporizador (Countdown Timer)
+   Countdown Timer - Fondo blanco con patrón dorado
 ========================================================= */
-.timer-section {
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    margin: 50px 0;
+.countdown-section {
+    padding: 6rem 1rem 7rem;
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    position: relative;
+    overflow: hidden;
 }
+
+.countdown-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.countdown-heading {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 2.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+    .countdown-heading::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: var(--accent-color);
+    }
 
 #countdown {
-    font-size: 32px;
-    font-weight: bold;
-    color: #d4af37; /* Color dorado para el temporizador */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
 }
 
-    #countdown span {
-        margin: 0 10px;
-        padding: 10px;
-        background-color: #333;
-        color: white;
-        border-radius: 5px;
-    }
-
-/* =========================================================
-   Detalles del Evento
-========================================================= */
-.detalles {
-    padding: 50px 20px;
-    background-color: #f9f9f9;
-    text-align: center;
-}
-
-    .detalles img {
-        margin-bottom: 20px;
-    }
-
-    .detalles h2 {
-        font-size: 2em;
-        margin-bottom: 20px;
-    }
-
-    .detalles p {
-        font-size: 1.1em;
-        margin: 10px 0;
-    }
-
-    .detalles button {
-        background-color: #d4af37;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        font-size: 1em;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-    }
-
-        .detalles button:hover {
-            background-color: #b89c2e;
-        }
-
-/* =========================================================
-   Información de Transporte
-========================================================= */
-.transporte {
-    padding: 50px 20px;
-    background-color: #fff;
-    text-align: center;
-}
-
-    .transporte img {
-        margin-bottom: 20px;
-    }
-
-    .transporte h2 {
-        font-size: 2em;
-        margin-bottom: 20px;
-    }
-
-    .transporte p {
-        max-width: 800px;
-        margin: 0 auto 20px;
-        line-height: 1.6;
-        font-size: 1em;
-        color: #555;
-    }
-
-    .transporte ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .transporte li {
-        margin: 10px 0;
-        font-size: 1em;
-    }
-
-/* =========================================================
-   Blog o Actualizaciones
-========================================================= */
-.blog {
-    padding: 50px 20px;
-    background-color: #fff;
-    text-align: center;
-}
-
-    .blog img {
-        margin-bottom: 20px;
-    }
-
-    .blog h2 {
-        font-size: 2em;
-        margin-bottom: 20px;
-    }
-
-    .blog p {
-        max-width: 800px;
-        margin: 0 auto 20px;
-        line-height: 1.6;
-        font-size: 1em;
-        color: #555;
-    }
-
-/* =========================================================
-   Confirmación de Asistencia (RSVP)
-========================================================= */
-.rsvp {
-    padding: 50px 20px;
-    background-color: #BDD1C4;
-    text-align: center;
-}
-
-    .rsvp h2 {
-        font-size: 2em;
-        margin-bottom: 20px;
-    }
-
-    .rsvp form {
-        max-width: 600px;
-        margin: 0 auto;
-        text-align: left;
-    }
-
-    .rsvp label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-    }
-
-    .rsvp input[type="text"],
-    .rsvp input[type="email"],
-    .rsvp select,
-    .rsvp textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 1em;
-        box-sizing: border-box;
-    }
-
-    .rsvp button {
-        background-color: #d4af37;
-        color: white;
-        border: none;
-        padding: 15px 30px;
-        cursor: pointer;
-        font-size: 1em;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-    }
-
-        .rsvp button:hover {
-            background-color: #b89c2e;
-        }
-
-/* =========================================================
-   Mensajes de los Invitados
-========================================================= */
-.mensajes {
-    padding: 50px 20px;
-    background-color: #fff;
-    text-align: center;
-}
-
-    .mensajes img {
-        margin-bottom: 20px;
-    }
-
-    .mensajes h2 {
-        font-size: 2em;
-        margin-bottom: 20px;
-    }
-
-    .mensajes form {
-        max-width: 600px;
-        margin: 0 auto 40px;
-        text-align: left;
-    }
-
-    .mensajes label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-    }
-
-    .mensajes input[type="text"],
-    .mensajes textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 1em;
-        box-sizing: border-box;
-    }
-
-    .mensajes button {
-        background-color: #d4af37;
-        color: white;
-        border: none;
-        padding: 15px 30px;
-        cursor: pointer;
-        font-size: 1em;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-    }
-
-        .mensajes button:hover {
-            background-color: #b89c2e;
-        }
-
-.lista-mensajes {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: left;
-}
-
-    .lista-mensajes h3 {
-        font-size: 1.5em;
-        margin-bottom: 20px;
-    }
-
-.mensaje-item {
-    background-color: #f1f1f1;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-}
-
-    .mensaje-item p {
-        margin: 0;
-        font-size: 1em;
-        color: #555;
-    }
-
-/* =========================================================
-   Preguntas Frecuentes (FAQ)
-========================================================= */
-.faq {
-    padding: 50px 20px;
-    background-color: white;
-    text-align: center;
-}
-
-    .faq img {
-        margin-bottom: 20px;
-    }
-
-    .faq h2 {
-        font-size: 2em;
-        margin-bottom: 20px;
-    }
-
-.faq-item {
-    max-width: 800px;
-    margin: 0 auto 20px;
-    text-align: left;
-}
-
-    .faq-item h3 {
-        font-size: 1.5em;
-        margin-bottom: 10px;
-        color: #d4af37;
-    }
-
-    .faq-item p {
-        font-size: 1em;
-        color: #555;
-    }
-
-
-
-/* =========================================================
-   Galería
-========================================================= */
-.galeria {
-    padding: 50px 20px;
-    background-color: #f9f9f9;
-    text-align: center;
-}
-
-    .galeria h2 {
-        font-size: 2em;
-        margin-bottom: 20px;
-    }
-
-    .galeria img {
-        margin-bottom: 20px;
-    }
-
-.carousel {
-    display: flex;
-    overflow-x: scroll;
-    gap: 20px;
-    padding: 20px 0;
-}
-
-    .carousel img {
-        max-width: 1000%;
-        height: auto;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-/* =========================================================
-   Footer
-========================================================= */
-.footer {
-    text-align: center;
-    padding: 30px 20px;
-    background-color: #5C5C5C;
+.time-unit {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: white;
-    font-family: 'Lato', sans-serif;
-    font-size: 1em;
+    padding: 2rem 1.5rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transform: translateY(0);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
 }
 
-    .footer p {
-        margin: 5px 0;
+    .time-unit::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0));
+        opacity: 0.3;
+    }
+
+    .time-unit:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .time-unit span {
+        display: block;
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .time-unit small {
+        font-size: 1rem;
+        opacity: 0.9;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
     }
 
 /* =========================================================
-   Timeline para Invitación de Boda
+   Sección de Detalles - Fondo morado claro con patrón
 ========================================================= */
-.timeline-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+.details-section {
+    position: relative;
+    padding: 7rem 1rem 7rem;
+    background-color: white;
+    overflow: hidden;
 }
 
-    .timeline-container h1 {
-        text-align: center;
-        margin-bottom: 40px;
-        color: #333333;
+    .details-section::before {
+        content: '';
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 300px;
+        height: 300px;
+        background: var(--primary-light);
+        opacity: 0.03;
+        border-radius: 50%;
+        z-index: 0;
     }
 
+/* Cambiado a flexbox para garantizar que estén en línea */
+.details-grid {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1.25rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: auto;
+    padding: 0.5rem 0.5rem 1.5rem;
+    scroll-snap-type: x mandatory;
+    position: relative;
+    z-index: 1;
+}
+
+/* Estilo de tarjetas compacto con ancho fijo */
+.detail-item {
+    flex: 0 0 auto;
+    width: 220px; /* Ancho fijo para todas las tarjetas */
+    height: 220px; /* Altura reducida */
+    background: var(--white);
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.25rem;
+    scroll-snap-align: center;
+}
+
+    /* Borde decorativo superior */
+    .detail-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        background: linear-gradient(to right, var(--primary-dark), var(--primary-light));
+        opacity: 0.5;
+    }
+
+    /* Efecto de hover */
+    .detail-item:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+/* Contenedor de ícono compacto */
+.detail-icon-container {
+    width: 50px;
+    height: 50px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.75rem;
+}
+
+.detail-item i {
+    font-size: 1.4rem;
+    color: var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+/* Títulos y textos más compactos */
+.detail-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.detail-item p {
+    color: var(--text-medium);
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+}
+
+/* Botón de mapa más pequeño */
+.map-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.75rem;
+    box-shadow: 0 4px 10px rgba(84, 61, 124, 0.25);
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+    .map-btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(84, 61, 124, 0.3);
+    }
+
+    .map-btn i {
+        color: var(--accent-light);
+        font-size: 0.8rem;
+        background: transparent;
+        width: auto;
+        height: auto;
+        margin: 0;
+    }
+
+/* =========================================================
+   Sección del Programa - Fondo blanco con patrón dorado
+========================================================= */
+.programa-section {
+    padding: 7rem 1rem 8rem;
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 16c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm33.414-6l5.95-5.95L45.95.636 40 6.586 34.05.636 32.636 2.05 38.586 8l-5.95 5.95 1.414 1.414L40 9.414l5.95 5.95 1.414-1.414L41.414 8zM40 48c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM9.414 40l5.95-5.95-1.414-1.414L8 38.586l-5.95-5.95L.636 34.05 6.586 40l-5.95 5.95 1.414 1.414L8 41.414l5.95 5.95 1.414-1.414L9.414 40z' fill='%23d4af37' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E");
+    position: relative;
+    overflow: hidden;
+}
+
+    .programa-section::after {
+        content: '';
+        position: absolute;
+        top: -150px;
+        left: -150px;
+        width: 400px;
+        height: 400px;
+        background: var(--accent-color);
+        opacity: 0.02;
+        border-radius: 50%;
+        z-index: 0;
+    }
+
+.programa-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* TIMELINE */
 .timeline {
     position: relative;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px 0;
-    margin-left: 20px;
 }
 
+    /* Línea central vertical */
+    .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 4px;
+        margin-left: -2px;
+        background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+        border-radius: 2px;
+    }
+
+    /* Círculo de inicio */
     .timeline::after {
         content: '';
         position: absolute;
-        left: 30px;
         top: 0;
-        bottom: 0;
-        width: 4px;
-        background: #e0e0e0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        background: var(--primary-color);
+        border: 3px solid white;
+        border-radius: 50%;
+        z-index: 2;
+        box-shadow: 0 0 0 5px rgba(84, 61, 124, 0.1);
     }
 
+/* Elementos del timeline */
 .timeline-item {
     position: relative;
-    margin-bottom: 30px;
-    padding-left: 60px;
+    margin-bottom: 50px;
+    clear: both;
 }
 
-    .timeline-item:last-child {
-        margin-bottom: 0;
+    .timeline-item::after {
+        content: '';
+        display: table;
+        clear: both;
     }
 
-.timeline-icon {
+/* Ícono en el centro */
+.timeline-badge {
     position: absolute;
-    left: 20px;
-    background: #ff6f61;
-    width: 20px;
-    height: 20px;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    top: 0;
-    transform: translateY(0);
+    background: white;
+    border: 3px solid var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: 0 0 0 5px rgba(212, 175, 55, 0.2);
 }
 
-.timeline-content {
-    background: #f1f1f1;
-    padding: 15px 20px;
-    border-radius: 6px;
+    .timeline-badge i {
+        color: var(--accent-color);
+        font-size: 18px;
+    }
+
+/* Panel de contenido - alternando izquierda/derecha */
+.timeline-panel {
+    position: relative;
+    width: 46%;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:nth-child(odd) .timeline-panel {
+    float: left;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) .timeline-panel {
+    float: right;
+    text-align: left;
+}
+
+/* Flechas apuntando a la línea central */
+.timeline-panel::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    border: solid 10px transparent;
+}
+
+.timeline-item:nth-child(odd) .timeline-panel::after {
+    right: -20px;
+    border-left-color: white;
+}
+
+.timeline-item:nth-child(even) .timeline-panel::after {
+    left: -20px;
+    border-right-color: white;
+}
+
+/* Borde superior de color */
+.timeline-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+    border-radius: 8px 8px 0 0;
+}
+
+/* Efectos hover */
+.timeline-panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Contenido */
+.timeline-heading {
+    margin-bottom: 15px;
+}
+
+.timeline-hora {
+    display: inline-block;
+    padding: 5px 15px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.timeline-heading h3 {
+    color: var(--primary-color);
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+.timeline-body p {
+    color: var(--text-medium);
+    margin-bottom: 0;
+}
+
+/* =========================================================
+   Formulario RSVP - Fondo verde claro con patrón
+========================================================= */
+.rsvp-section {
+    padding: 7rem 2rem 8rem;
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 16c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm33.414-6l5.95-5.95L45.95.636 40 6.586 34.05.636 32.636 2.05 38.586 8l-5.95 5.95 1.414 1.414L40 9.414l5.95 5.95 1.414-1.414L41.414 8zM40 48c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM9.414 40l5.95-5.95-1.414-1.414L8 38.586l-5.95-5.95L.636 34.05 6.586 40l-5.95 5.95 1.414 1.414L8 41.414l5.95 5.95 1.414-1.414L9.414 40z' fill='%23d4af37' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E");
     position: relative;
 }
 
-    .timeline-content h2 {
-        margin-top: 0;
-        color: #ff6f61;
+<style >
+/* Estilo para forzar la línea dorada en la sección RSVP */
+#rsvp-titulo {
+    position: relative;
+}
+
+#rsvp-titulo::after {
+    content: "" !important;
+    position: absolute !important;
+    display: block !important;
+    width: 100px !important;
+    height: 3px !important;
+    background: linear-gradient(to right, #d4af37, #7a5eb3) !important;
+    bottom: -15px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    border-radius: 3px !important;
+    z-index: 100 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Para verificar la separación entre secciones */
+.programa-section {
+    margin-bottom: 20px !important;
+    border-bottom: 5px solid transparent !important;
+}
+
+.rsvp-section {
+    margin-top: 20px !important;
+    border-top: 5px solid transparent !important;
+}
+
+</style >
+
+
+.rsvp-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    z-index: 0;
+}
+
+.rsvp-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.rsvp-form {
+    max-width: 700px;
+    margin: 4rem auto 0;
+    padding: 3.5rem;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+    .rsvp-form::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
     }
 
-    .timeline-content p {
-        margin: 5px 0 0;
-        color: #555555;
+.form-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.form-title {
+    color: var(--primary-color);
+    margin-bottom: 1.2rem;
+    font-size: 2.2rem;
+}
+
+.form-subtitle {
+    color: var(--text-medium);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.8rem;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.8rem;
+        color: var(--text-color);
+        font-weight: 500;
+        font-size: 1rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: var(--radius-sm);
+        font-family: var(--font-body);
+        font-size: 1rem;
+        transition: var(--transition);
+        background: var(--background-light);
+    }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(122, 94, 179, 0.1);
+        }
+
+.submit-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    padding: 1.2rem 2.8rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: var(--transition);
+    display: block;
+    margin: 2.5rem auto 0;
+    box-shadow: 0 4px 15px rgba(86, 62, 122, 0.25);
+}
+
+    .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(86, 62, 122, 0.4);
+    }
+
+/* Mensaje de Confirmación Mejorado */
+.confirmation-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    backdrop-filter: blur(5px);
+}
+
+    .confirmation-overlay.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+.confirmation-box {
+    background: white;
+    padding: 3.5rem;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transform: scale(0.8);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    max-width: 450px;
+    box-shadow: var(--shadow-lg);
+    border-top: 5px solid var(--accent-color);
+}
+
+.confirmation-overlay.active .confirmation-box {
+    transform: scale(1);
+}
+
+.confirmation-icon {
+    font-size: 3.5rem;
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+    display: inline-block;
+    background: rgba(212, 175, 55, 0.1);
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    border-radius: 50%;
+}
+
+.confirmation-box h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.confirmation-box p {
+    color: var(--text-medium);
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.close-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(86, 62, 122, 0.25);
+}
+
+    .close-btn:hover {
+        background: var(--primary-dark);
+        box-shadow: 0 8px 20px rgba(86, 62, 122, 0.4);
+        transform: translateY(-3px);
     }
 
 /* =========================================================
-   Responsive Design
+   Sección de FAQ - Fondo blanco con patrón sutil
+========================================================= */
+.faq-section {
+    padding: 7rem 1rem 8rem;
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23543d7c' fill-opacity='0.03' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+    position: relative;
+}
+
+    .faq-section::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(to top, rgba(245, 245, 250, 0.4), transparent);
+        z-index: 0;
+    }
+
+.faq-content {
+    position: relative;
+    z-index: 1;
+}
+
+.faq-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    gap: 2.5rem;
+}
+
+.faq-item {
+    background: white;
+    padding: 2.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border-left: 5px solid var(--accent-color);
+    position: relative;
+    overflow: hidden;
+}
+
+    .faq-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(212, 175, 55, 0.03) 0%, rgba(84, 61, 124, 0.03) 100%);
+        z-index: -1;
+    }
+
+    .faq-item:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateX(8px);
+    }
+
+.faq-pregunta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+    .faq-pregunta i {
+        font-size: 1.5rem;
+        color: var(--accent-color);
+        background: rgba(212, 175, 55, 0.1);
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 50%;
+    }
+
+    .faq-pregunta h3 {
+        font-size: 1.4rem;
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+
+.faq-respuesta {
+    padding-left: 4.5rem;
+    color: var(--text-medium);
+    line-height: 1.8;
+}
+
+/* =========================================================
+   Galería - Fondo violeta muy claro
+========================================================= */
+<style >
+/* Estilo para forzar la línea dorada en la sección RSVP */
+#galeria-titulo {
+    position: relative;
+}
+
+#fgaleria-titulo::after {
+    content: "" !important;
+    position: absolute !important;
+    display: block !important;
+    width: 100px !important;
+    height: 3px !important;
+    background: linear-gradient(to right, #d4af37, #7a5eb3) !important;
+    bottom: -15px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    border-radius: 3px !important;
+    z-index: 100 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Para verificar la separación entre secciones */
+.programa-section {
+    margin-bottom: 20px !important;
+    border-bottom: 5px solid transparent !important;
+}
+
+.galeria-section {
+    margin-top: 20px !important;
+    border-top: 5px solid transparent !important;
+}
+
+</style >
+
+.galeria-section {
+    background-color: white;
+    position: relative;
+    padding: 7rem 1rem 8rem;
+}
+
+.galeria-content {
+    position: relative;
+    z-index: 1;
+}
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.galeria-item {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    height: 250px;
+}
+
+    .galeria-item:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .galeria-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .galeria-item:hover img {
+        transform: scale(1.05);
+    }
+
+.galeria-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.galeria-item:hover .galeria-overlay {
+    opacity: 1;
+}
+
+/* =========================================================
+   Media Queries para Timeline
 ========================================================= */
 @media (max-width: 768px) {
-    .nav {
-        flex-direction: column;
+    .timeline::before {
+        left: 40px;
     }
 
-        .nav li {
-            margin: 10px 0;
-        }
-
-    .hero1,
-    .hero,
-    .detalles,
-    .transporte,
-    .blog,
-    .rsvp,
-    .mensajes,
-    .faq,
-    .galeria {
-        padding: 30px 15px;
+    .timeline::after {
+        left: 40px;
+        transform: none;
     }
 
-    .carousel {
-        flex-direction: column;
-        align-items: center;
+    .timeline-badge {
+        left: 40px;
+        transform: none;
     }
 
-        .carousel img {
-            width: 80%;
-        }
+    .timeline-panel {
+        width: calc(100% - 80px);
+        float: right !important;
+        text-align: left !important;
+    }
 
-    .rsvp form,
-    .mensajes form {
-        font-size: 0.9em;
+    .timeline-item:nth-child(odd) .timeline-panel::after {
+        right: auto;
+        left: -20px;
+        border-left-color: transparent;
+        border-right-color: white;
     }
 }
 
-@media (max-width: 600px) {
-    .timeline {
-        margin-left: 10px;
+/* =========================================================
+   Media Queries Generales
+========================================================= */
+@media (max-width: 992px) {
+    .titulo-principal {
+        font-size: 4rem;
     }
 
-        .timeline::after {
-            left: 20px;
+    .subtitulo {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2.3rem;
+    }
+
+    #countdown {
+        gap: 1.5rem;
+    }
+
+    .time-unit span {
+        font-size: 2.5rem;
+    }
+
+    /* Asegurar scroll horizontal en dispositivos medianos */
+    .details-grid {
+        justify-content: flex-start;
+        padding-bottom: 1.5rem;
+    }
+
+        .details-grid::after {
+            content: '';
+            padding-right: 1rem;
         }
 
-    .timeline-item {
-        padding-left: 50px;
+    .detail-item {
+        scroll-snap-align: start;
+    }
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 5rem 1.5rem;
     }
 
-    .timeline-icon {
-        left: 10px;
+    .titulo-principal {
+        font-size: 3rem;
+    }
+
+    .subtitulo {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    #countdown {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .details-grid,
+    .programa-grid {
+        gap: 2rem;
+    }
+
+    .rsvp-form {
+        padding: 2rem;
+    }
+
+    .galeria-grid {
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 480px) {
-    body {
-        font-size: 14px;
-        font-family: 'Montserrat', sans-serif; /* Sobrescribe a la fuente anterior */
+    .header-icon {
+        font-size: 2.5rem;
     }
 
-    .header h1 {
-        font-size: 1.8em;
+    .titulo-principal {
+        font-size: 2.5rem;
     }
 
-    .nav a {
-        font-size: 1em;
+    .subtitulo {
+        font-size: 1rem;
+        letter-spacing: 0.1em;
     }
 
-    .hero1 {
-        font-size: 2em;
+    .section-title {
+        font-size: 1.8rem;
     }
 
-        .hero1 h1 {
-            font-size: 1.8em;
+    .section-icon {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        font-size: 2rem;
+    }
+
+    .time-unit {
+        padding: 1.5rem 1rem;
+    }
+
+        .time-unit span {
+            font-size: 2rem;
         }
 
-        .hero1 h2 {
-            font-size: 1.2em;
-        }
-
-    .hero h1 {
-        font-size: 1.5em;
+    .rsvp-form {
+        padding: 1.5rem;
     }
 
-    .cta-btn {
-        padding: 10px 20px;
-        font-size: 0.9em;
+    .form-title {
+        font-size: 1.8rem;
     }
 
-    .detalles p,
-    .transporte p,
-    .blog p,
-    .faq-item p {
-        font-size: 0.9em;
+    .submit-btn {
+        width: 100%;
     }
+}
 
-    .rsvp,
-    .mensajes {
-        font-size: 0.9em;
-    }
+/* Solución definitiva para la línea dorada */
+.golden-line {
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, #d4af37, #7a5eb3);
+    margin: 15px auto 25px;
+    border-radius: 3px;
+}
 
-    .footer {
-        font-size: 0.9em;
-    }
+/* Asegurar que todos los títulos de sección muestren su línea */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, #d4af37, #7a5eb3);
+    border-radius: 3px;
+    display: block !important;
+}
+
+/* Eliminar la línea después del título RSVP ya que usaremos un elemento dedicado */
+#rsvp .section-title::after {
+    display: none !important;
 }
