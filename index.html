@@ -872,6 +872,10 @@
                     <small>Segundos</small>
                 </div>
             </div>
+            <h3><br />¡Dale Play!</h3>
+            <audio controls autoplay loop>
+                <source src="Andres Cepeda - Por el resto de mi vida (Letra).mp3" type="audio/mpeg">
+            </audio>
         </div>
     </section>
 
@@ -899,7 +903,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Popup de Confirmación -->
     <div id="confirmationOverlay" class="confirmation-overlay">
         <div class="confirmation-box">
@@ -917,73 +921,114 @@
             const fechaBoda = new Date('May 17, 2025 16:00:00').getTime();
             const ahora = new Date().getTime();
             const diferencia = fechaBoda - ahora;
-            
+
             // Calcular días, horas, minutos y segundos
             const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
             const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
             const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-            
+
             // Actualizar elementos HTML
             document.getElementById('days').textContent = dias.toString().padStart(2, '0');
             document.getElementById('hours').textContent = horas.toString().padStart(2, '0');
             document.getElementById('minutes').textContent = minutos.toString().padStart(2, '0');
             document.getElementById('seconds').textContent = segundos.toString().padStart(2, '0');
         }
-        
+
         // Iniciar y actualizar cada segundo
         actualizarCuentaRegresiva();
         setInterval(actualizarCuentaRegresiva, 1000);
-        
+
         // Funciones para el formulario RSVP
-        const rsvpForm = document.getElementById('rsvpForm');
-        const confirmationOverlay = document.getElementById('confirmationOverlay');
-        
-        if (rsvpForm) {
-            rsvpForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Obtener datos del formulario
-                const nombre = document.getElementById('nombre').value;
-                const email = document.getElementById('email').value;
-                const asistentes = document.getElementById('asistentes').value;
-                
-                // Aquí podrías enviar los datos a un servidor (backend)
-                // En este ejemplo, solo mostramos un popup de confirmación
-                
-                // Actualizar mensaje de confirmación
-                document.getElementById('confirmationDetails').textContent = 
-                    `Hemos registrado tu confirmación, ${nombre}. Esperamos verte junto con ${asistentes} asistente(s) en nuestro día especial.`;
-                
-                // Mostrar popup
-                confirmationOverlay.style.display = 'flex';
-            });
-        }
-        
-        // Cerrar popup
-        function cerrarPopup() {
-            confirmationOverlay.style.display = 'none';
-            // Opcional: limpiar formulario después de enviar
+        document.addEventListener('DOMContentLoaded', function () {
+            const rsvpForm = document.getElementById('rsvpForm');
+            const confirmationOverlay = document.getElementById('confirmationOverlay');
+
             if (rsvpForm) {
-                rsvpForm.reset();
-            }
-        }
-        
-        // Cerrar popup al hacer clic fuera de él
-        confirmationOverlay.addEventListener('click', function(e) {
-            if (e.target === confirmationOverlay) {
-                cerrarPopup();
+                rsvpForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    // Obtener datos del formulario
+                    const nombre = document.getElementById('nombre').value;
+                    const asistentes = document.getElementById('asistentes').value;
+                    const scriptURL = 'https://script.google.com/macros/s/AKfycbyAsCw8kHeWLRyhJ-fmGL-EefEPZFwgLjzTmGlo5BYd70rndlimWfLuB0qAHW08eaN-Pg/exec';
+
+                    // Crear objeto FormData con los datos del formulario
+                    const formData = new FormData();
+                    formData.append('nombre', nombre);
+                    formData.append('asistentes', asistentes);
+
+                    // Mostrar algún indicador de carga
+                    const submitBtn = rsvpForm.querySelector('button[type="submit"]');
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = 'Enviando...';
+                    }
+
+                    // Enviar datos al Google App Script
+                    fetch(scriptURL, { method: 'POST', body: formData })
+                        .then(response => {
+                            if (response.ok) {
+                                return response.json();
+                            } else {
+                                throw new Error('Error en la respuesta del servidor');
+                            }
+                        })
+                        .then(data => {
+                            console.log('Éxito:', data);
+                            // Actualizar mensaje de confirmación
+                            document.getElementById('confirmationDetails').textContent =
+                                `${nombre} hemos registrado tu confirmación. Esperamos verte en nuestro día especial.`;
+                            // Mostrar popup
+                            confirmationOverlay.style.display = 'flex';
+                            // Reiniciar el formulario
+                            rsvpForm.reset();
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Hubo un problema al enviar tu RSVP. Por favor, intenta nuevamente.');
+                        })
+                        .finally(() => {
+                            // Restaurar el botón submit
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.textContent = 'Enviar';
+                            }
+                        });
+                });
             }
         });
-        
+
+        // Función para cerrar popup
+        function cerrarPopup() {
+            if (confirmationOverlay) {
+                confirmationOverlay.style.display = 'none';
+            }
+        }
+
+        // Verifica que el overlay existe antes de agregar event listeners
+        if (confirmationOverlay) {
+            // Cerrar popup al hacer clic fuera de él
+            confirmationOverlay.addEventListener('click', function (e) {
+                if (e.target === confirmationOverlay) {
+                    cerrarPopup();
+                }
+            });
+
+            // Agregar botón de cierre dentro del popup
+            const closeButtons = document.querySelectorAll('.close-popup');
+            closeButtons.forEach(button => {
+                button.addEventListener('click', cerrarPopup);
+            });
+        }
+
         // Smooth scrolling para navegación
         document.querySelectorAll('.nav-menu a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
+
                 const targetId = this.getAttribute('href');
                 const targetSection = document.querySelector(targetId);
-                
+
                 if (targetSection) {
                     window.scrollTo({
                         top: targetSection.offsetTop - 80, // Ajuste para el header fijo
@@ -1123,11 +1168,6 @@
             </div>
 
             <div class="form-group">
-                <label for="email"><i class="fas fa-envelope"></i> Correo electrónico:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <div class="form-group">
                 <label for="asistentes"><i class="fas fa-users"></i> Número de asistentes (incluyete en la suma total e indica el número según tu invitación):</label>
                 <select id="asistentes" name="asistentes" required>
                     <option value="1">1 persona (yo)</option>
@@ -1159,7 +1199,7 @@
                     <i class="fas fa-sun"></i>
                     <h3>¿El estacionamiento tiene algún costo?</h3>
                 </div>
-                <p>No. El estacionamiento está incluído. Si el mismo se llena, el personal del estacionamiento te orientará para que llegues a otro estacionamiento cercano, en donde ofrecemos servicio de shuttle para llegar a la actividad. Llega temprano.</p>
+                <p>No. El estacionamiento está incluído. Si el mismo se llena, el personal del estacionamiento te orientará para que llegues a otro estacionamiento cercano, en donde ofreceremos servicio de transportación para llegar a la actividad. Llega temprano.</p>
             </div>
 
             <div class="faq-item">
@@ -1201,13 +1241,5 @@
                 </div>
                 <p>Por favor evita vestir de blanco, lila o violeta.</p>
             </div>
-
-            <div class="faq-item">
-                <div class="faq-pregunta">
-                    <i class="fas fa-gift"></i>
-                    <h3>¿Me puedo llevar la decoración al finalizar la actividad?</h3>
-                </div>
-                <p>Podrás llevarte los arreglos florales de las mesas de invitados, recuerda dejar las bases.</p>
-            </div>
-        </div>
     </section>
+
